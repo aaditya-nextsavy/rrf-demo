@@ -1,0 +1,126 @@
+.header-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* background-color: var(--color-primary-blue); */
+    /* background: rgba(226, 167, 167, 0.413); */
+    color: var(--color-white);
+    padding: 0;
+    border-radius: 999px;
+    font-size: var(--fs-16);
+    font-weight: var(--fw-600);
+    transition: var(--transition-primary);
+    width: calc(100% + 60px);
+    overflow: hidden;
+    transform: translateX(-60px);
+}
+
+
+.header-btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.15);
+    font-size: 18px;
+}
+
+
+
+.primary-button,
+.download-button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: max-content;
+    color: var(--color-white);
+    background: var(--color-primary-blue);
+    border-radius: 403.23px;
+    padding-top: 18px;
+    padding-right: 24px;
+    padding-bottom: 18px;
+    font-weight: var(--fw-600);
+    font-size: 18px;
+    padding-left: 24px;
+    transition: all 0.3s ease;
+    transform: translateX(0px);
+}
+
+.primary-button::before,
+.download-button::before {
+    content: url('../../media/icons/rightarrow.png');
+    position: absolute;
+    font-weight: 300;
+    background: var(--color-primary-orange);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    left: -60px;
+    padding-top: 18px;
+    padding-right: 24px;
+    padding-bottom: 18px;
+    padding-left: 24px;
+    transition: all 0.3s ease;
+    background: var(--color-primary-blue);
+    aspect-ratio: 1/1;
+    width: 60px;
+
+}
+
+.primary-button::after,
+.download-button::after {
+    content: url('../../media/icons/uprightarrow.png');
+    ;
+
+    position: absolute;
+    font-weight: 300;
+    background: var(--color-primary-blue);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    right: -60px;
+    padding-top: 18px;
+    padding-right: 24px;
+    padding-bottom: 18px;
+    padding-left: 24px;
+    transition: all 0.3s ease;
+    aspect-ratio: 1/1;
+    width: 60px;
+
+}
+
+.primary-button:hover,
+.download-button:hover {
+    background: var(--color-primary-orange);
+    transform: translateX(60px);
+    cursor: pointer;
+}
+
+.primary-button:hover::after,
+.download-button:hover::after {
+    background: var(--color-primary-orange);
+}
+
+.primary-button:hover::before,
+.download-button:hover::before {
+    background: var(--color-primary-orange);
+}
+
+
+.download-button::before,
+.download-button::after {
+    content: url('../../media/icons/download-icon.png');
+}
+
+
+.download-button-wrapper .download-button {
+    width: calc(100% - 60px);
+}

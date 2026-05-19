@@ -1,0 +1,118 @@
+.foundation-creating-impact-section {}
+
+.foundation-creating-impact-section__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 72px;
+}
+
+/* LEFT IMAGE */
+.foundation-creating-impact-section__image-wrapper {
+    display: flex;
+    justify-content: start;
+}
+
+.foundation-creating-impact-section__circle {
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.foundation-creating-impact-section__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* RIGHT CONTENT */
+.foundation-creating-impact-section__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+}
+
+
+.foundation-creating-impact-section__content .section-title {
+    max-width: 70%;
+    text-wrap: balance;
+}
+
+
+.foundation-creating-impact-section__text-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 52px;
+    font-size: 18px;
+    line-height: 1.9;
+    color: #333;
+}
+
+.foundation-creating-impact-section__text-grid p {
+    font-weight: 400;
+    font-size: var(--fs-18);
+    line-height: 27px;
+    letter-spacing: 0px;
+    text-align: justify;
+    text-transform: capitalize;
+}
+
+
+.foundation-creating-impact-section__btn {
+    max-width: 48%;
+}
+
+
+/* TABLET */
+@media (max-width: 991px) {
+
+    .foundation-creating-impact-section__wrapper {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .foundation-creating-impact-section__circle {
+        width: 380px;
+        height: 380px;
+    }
+
+    .foundation-creating-impact-section__heading {
+        font-size: 42px;
+    }
+
+    .foundation-creating-impact-section__text-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+
+    .foundation-creating-impact-section {
+        padding: 70px 0;
+    }
+
+    .foundation-creating-impact-section__circle {
+        width: 280px;
+        height: 280px;
+    }
+
+    .foundation-creating-impact-section__heading {
+        font-size: 32px;
+    }
+
+    .foundation-creating-impact-section__text-grid {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .foundation-creating-impact-section__buttons {
+        flex-wrap: wrap;
+    }
+
+    .foundation-creating-impact-section__btn {
+        width: 100%;
+    }
+}

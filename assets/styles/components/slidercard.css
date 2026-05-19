@@ -1,0 +1,129 @@
+.customCard {
+
+    --card-bg: #ffffff;
+    --text: #017CC1;
+    --hover-bg: #EF4023;
+    --hover-text: #ffffff;
+    position: relative;
+
+    width: 441px;
+    aspect-ratio: 441 / 500;
+
+    flex-shrink: 0;
+
+    cursor: pointer;
+    transition: .35s ease;
+}
+
+.customCard:hover .customCard-shape {
+    color: var(--hover-bg);
+}
+
+.customCard-shape {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: var(--card-bg);
+    /* border: 1px solid #000000; */
+    transition: .35s ease;
+    filter:
+        drop-shadow(0 16px 30px #00000007);
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.customCard-content {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    /* padding: 58px 78px 82px 78px; */
+    padding: 43px 58px 65px 58px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.customCard-icon {
+    width: 220px;
+    height: auto;
+    margin-bottom: 28px;
+}
+
+.customCard-title {
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -0.83px;
+    text-transform: capitalize;
+    color: var(--text);
+    margin-bottom: 24px;
+    transition: .35s ease;
+}
+
+.customCard-description {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22.5px;
+    letter-spacing: -0.25px;
+    text-align: justify;
+    text-transform: capitalize;
+
+    color: var(--text);
+    transition: .35s ease;
+}
+
+.customCard-link {
+    margin-top: auto;
+
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-transform: capitalize;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-offset: 3px;
+    text-decoration-skip-ink: auto;
+
+    color: var(--text);
+
+    transition: .35s ease;
+}
+
+.customCard-button {
+    position: absolute;
+    right: 37px;
+    bottom: 57px;
+    border: none;
+    color: var(--text);
+    font-size: 32px;
+    z-index: 3;
+    transition: .35s ease;
+}
+
+.customCard-icon {
+    color: var(--text);
+    transition: .35s ease;
+}
+
+.customCard:hover .customCard-shape {
+    color: var(--hover-bg);
+}
+
+.customCard:hover .customCard-title,
+.customCard:hover .customCard-description,
+.customCard:hover .customCard-link {
+    color: var(--hover-text);
+}
+
+.customCard:hover .customCard-button,
+.customCard:hover .customCard-icon {
+    color: white;
+}

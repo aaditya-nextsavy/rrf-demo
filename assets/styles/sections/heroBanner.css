@@ -1,0 +1,279 @@
+.hero-banner-section {
+    position: relative;
+    height: auto;
+}
+
+.hero-banner-abstract-wrapper {
+    height: 54vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(87.1deg, #017CC1 0.14%, #016298 99.87%);
+}
+
+.hero-banner-edge-abstract-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    height: 100%;
+    align-items: end;
+    z-index: 0;
+}
+
+
+
+/* WAVE WRAPPER */
+
+.hero-banner-wave-animation {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* SVG */
+
+.hero-wave-svg {
+    position: absolute;
+    width: 220%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+}
+
+/* WAVE ANIMATION */
+
+.hero-wave-parallax>use {
+    animation: heroWaveMove 35s cubic-bezier(.55, .5, .45, .5) infinite;
+}
+
+.hero-wave-parallax>use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 18s;
+}
+
+.hero-wave-parallax>use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 24s;
+}
+
+.hero-wave-parallax>use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 30s;
+}
+
+.hero-wave-parallax>use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 34s;
+}
+
+/* KEYFRAMES */
+
+@keyframes heroWaveMove {
+
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
+/* CONTENT ABOVE WAVES */
+
+.herobanner-hero-title-wrapper,
+.herobanner-hero-description-wrapper {
+    position: relative;
+    z-index: 5;
+}
+
+
+.hero-banner-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at top,
+            #017bc163,
+            transparent 50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .hero-wave-svg {
+        width: 350%;
+    }
+
+}
+
+
+
+
+.herobanner-hero-title-wrapper {
+    z-index: 1;
+    position: relative;
+    display: flex;
+    height: 100%;
+    align-items: end;
+}
+
+.herobanner-hero-title {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 32px;
+    width: 100%;
+    max-width: 710px;
+    padding-bottom: 52px;
+}
+
+.herobanner-hero-title h3 {
+    font-weight: var(--fw-800);
+    font-size: var(--fs-14);
+    line-height: 14px;
+    text-transform: uppercase;
+    font-style: italic;
+    color: var(--color-white);
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    width: fit-content;
+    position: relative;
+}
+
+/* DOT */
+
+.herobanner-hero-title h3::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #fff;
+
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* LINE */
+
+.herobanner-hero-title h3::before {
+    content: "";
+
+    position: absolute;
+
+    left: calc(100% + 0px);
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 260px;
+    height: 1px;
+
+    background:
+        linear-gradient(to right,
+            rgba(255, 255, 255, 0.849) 0%,
+            rgba(255, 255, 255, 0.45) 70%,
+            rgba(255, 255, 255, 0) 100%);
+
+    clip-path: polygon(10 50%,
+            4% 0,
+            100% 0,
+            96% 50%,
+            100% 100%,
+            4% 100%);
+
+    opacity: 1;
+}
+
+
+.herobanner-hero-title h1 {
+    font-weight: var(--fw-900);
+    font-size: 86px;
+    line-height: 86px;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+
+    color: var(--color-white);
+}
+
+.herobanner-hero-description-wrapper {}
+
+.herobanner-hero-description {
+    width: 100%;
+    max-width: 710px;
+}
+
+.herobanner-hero-description p {
+    font-weight: var(--fw-400);
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: -0.3px;
+    text-align: justify;
+    text-transform: capitalize;
+    color: var(--color-primary-blue);
+
+}
+
+.herobanner-hero-description p strong {
+    font-weight: var(--fw-900);
+}
+
+.herobanner-hero-description .primary-button {
+    width: calc(100%-60px);
+}
+
+
+.herobanner-hero-description .primary-button-wrapper {
+    overflow: hidden;
+    border-radius: 300px;
+}
+
+
+.herobanner-hero-description .primary-button {
+    width: calc(100% - 60px);
+}
+
+
+
+.hero-hands-animation-image-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: end;
+}
+
+.hero-hands-animation-image {
+    position: relative;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.main-hand-animation {
+    animation: rotateAntiClockwise 32s linear infinite;
+    transform-origin: center;
+}
+
+
+.hero-hands-animation-sub-image {
+    position: absolute;
+    bottom: 100px;
+    right: 10px;
+
+}

@@ -1,0 +1,120 @@
+.key-areas-section {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding: 40px 0 0;
+    /* background-color: rgba(255, 228, 196, 0.466); */
+}
+
+
+.key-areas-info-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+
+.key-areas-slider-wrapper {
+    position: relative;
+    /* background-color: rgba(255, 203, 196, 0.466); */
+}
+
+.key-areas-section-info {
+    width: 100%;
+    padding: 220px 0;
+    /* max-width: 430px; */
+}
+
+.key-areas-section-info .section-title {
+    max-width: 100%;
+}
+
+.key-areas-section-info .section-title__heading {
+    text-wrap: balance;
+}
+
+.key-areas-section-description {}
+
+
+.key-areas-section-description p {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 0px;
+    text-align: justify;
+    text-transform: capitalize;
+
+}
+
+.stackCardsSection {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 48px 0 80px;
+    scrollbar-width: none;
+}
+
+.stackCardsSection::-webkit-scrollbar {
+    display: none;
+}
+
+.key-areas-section .customCard-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: max-content;
+    padding-inline: 24px;
+}
+
+.key-areas-section .customCard+.customCard {
+    margin-left: -72px;
+}
+
+@media (min-width: 1024px) {
+    .key-areas-section {
+        display: grid;
+        grid-template-columns: minmax(520px, 650px) minmax(0, 1fr);
+        column-gap: clamp(32px, 5vw, 96px);
+        row-gap: 0;
+        align-items: start;
+    }
+
+    .key-areas-info-wrapper {
+        position: sticky;
+        top: 20px;
+        left: 112px;
+        align-self: start;
+        padding-right: 24px;
+        width: 550px;
+    }
+
+    .key-areas-slider-wrapper {
+        min-height: 100vh;
+        padding-left: 100px;
+    }
+
+    .stackCardsSection {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        padding: 0;
+        display: block;
+        padding: 0 60px;
+    }
+
+    .key-areas-section .customCard-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        will-change: transform;
+    }
+
+    .key-areas-section .customCard {
+        position: absolute;
+        top: 50%;
+        left: clamp(16px, 2vw, 32px);
+        transform-origin: center center;
+        will-change: transform, opacity;
+        transition: none;
+    }
+}
