@@ -4,6 +4,7 @@
 }
 
 .hero-banner-abstract-wrapper {
+    min-height: 500px;
     height: 54vh;
     position: relative;
     overflow: hidden;
@@ -276,4 +277,215 @@
     bottom: 100px;
     right: 10px;
 
+}
+
+
+
+
+@media (max-width: 1770px) {}
+
+@media (max-width: 1580px) {
+    .hero-hands-animation-image svg {
+        max-width: 500px;
+    }
+
+    .hero-hands-animation-sub-image svg {
+        max-width: 120px;
+    }
+
+    .herobanner-hero-title h1 {
+        font-size: 72px;
+        line-height: 72px;
+    }
+
+    .herobanner-hero-title {
+        gap: 24px;
+    }
+
+    .herobanner-hero-description p {
+        font-size: 18px;
+        line-height: 26px;
+    }
+}
+
+@media (max-width: 1439px) {
+
+    .hero-banner-abstract-wrapper {
+        min-height: 450px;
+        max-height: 480px;
+    }
+
+    .herobanner-hero-title {
+        max-width: 600px;
+        padding-bottom: 32px;
+    }
+
+    .herobanner-hero-description {
+        max-width: 580px;
+    }
+}
+
+@media (max-width: 1279px) {
+    .herobanner-hero-title {
+        max-width: 530px;
+    }
+
+    .herobanner-hero-title h1 {
+        font-size: 58px;
+        line-height: 58px;
+    }
+
+    .herobanner-hero-description {
+        max-width: 530px;
+    }
+
+    .herobanner-hero-description p {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .hero-hands-animation-image svg {
+        max-width: 450px;
+    }
+
+    .hero-hands-animation-sub-image svg {
+        max-width: 120px;
+        max-height: 120px;
+    }
+
+    .hero-hands-animation-sub-image {
+        bottom: 130px;
+        right: 0;
+    }
+}
+
+@media (max-width: 1120px) {
+
+    .hero-banner-abstract-wrapper {
+        max-height: unset;
+        /* height: max-content; */
+    }
+
+    .hero-banner-edge-abstract-wrapper {
+        display: none;
+    }
+
+    .herobanner-hero-title {
+        padding-bottom: 170px;
+    }
+
+    .hero-hands-animation-image {
+        padding-bottom: 100px;
+        justify-content: start;
+    }
+
+    .hero-hands-animation-image svg {
+        max-width: 300px;
+
+    }
+
+    .herobanner-hero-description-wrapper {
+        padding-top: 170px;
+        padding-bottom: 50px;
+    }
+
+    .hero-hands-animation-sub-image {
+        bottom: 70px;
+        left: 230px;
+        height: 300px;
+    }
+
+    .hero-hands-animation-sub-image svg {
+        max-width: 100px;
+    }
+
+    .herobanner-hero-title h1 {
+        font-size: 54px;
+        line-height: 54px;
+    }
+}
+
+@media (max-width: 990px) {}
+
+@media (max-width: 990px) {}
+
+@media (max-width: 767px) {
+
+
+    .hero-banner-abstract-wrapper {
+        height: 400px;
+        min-height: unset;
+    }
+
+    .herobanner-hero-title h3::before {
+        width: 150px;
+
+    }
+
+    .herobanner-hero-title {
+        padding-bottom: 120px;
+    }
+
+    .herobanner-hero-title h3 {
+        font-size: var(--fs-12);
+    }
+
+    .herobanner-hero-title h1 {
+        font-size: 44px;
+        line-height: 48px;
+    }
+
+    .hero-hands-animation-image-wrapper {
+        align-items: center;
+    }
+
+    .hero-hands-animation-image svg {
+        max-width: 250px;
+        max-height: 250px;
+    }
+
+    .hero-hands-animation-image {
+        padding-bottom: 5px;
+    }
+
+    .hero-hands-animation-sub-image {
+        bottom: 10px;
+        height: 100px;
+        left: 200px;
+    }
+
+    .hero-hands-animation-sub-image svg {
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
+
+@media (max-width: 550px) {}
+
+@media (max-width: 400px) {
+    .herobanner-hero-title {
+        gap: 14px;
+    }
+
+    .herobanner-hero-title {
+        padding-bottom: 105px;
+    }
+
+    .herobanner-hero-title h1 {
+        font-size: 38px;
+        line-height: 38px;
+    }
+
+    .hero-banner-abstract-wrapper {
+        height: 360px;
+        min-height: unset;
+    }
+
+    .hero-hands-animation-image {
+        padding-bottom: 55px;
+    }
+
+    .hero-hands-animation-sub-image {
+        bottom: 55px;
+    }
 }

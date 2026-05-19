@@ -93,3 +93,102 @@
 .report-list-item .download-button-wrapper {
     max-width: 337px;
 }
+
+
+@media (max-width:1550px) {
+
+    .annual-reports-section {
+        padding: 100px 0;
+    }
+
+    .report-list-item-content h3 {
+        font-size: 32px;
+        line-height: 32px;
+    }
+
+    .report-list-item-content p {
+        line-height: 24px;
+    }
+
+    .report-list-item-content {
+        max-width: 650px;
+    }
+}
+
+@media (max-width:1300px) {
+    .report-list-item-content {
+        max-width: 600px;
+    }
+
+    .section-breif-cta p {
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
+
+@media (max-width:1130px) {
+
+    .annual-reports-section {
+        padding: 50px 0px;
+    }
+
+
+    .annual-reports-wrapper .section-title-cta-wrapper {
+        flex-direction: column;
+        gap: 32px;
+        /* align-items: center; */
+    }
+
+    .annual-reports-wrapper {
+        gap: 32px;
+    }
+
+    .report-list-item-content p {
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
+
+
+@media (max-width:1130px) {
+    .annual-reports-section .section-breif-cta {
+        max-width: 100%;
+    }
+}
+
+@media (max-width:991px) {
+    .report-list-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .report-list-item .download-button-wrapper {
+        max-width: 100%;
+    }
+
+    .report-list-item-content h3 {
+        font-size: 28px;
+        line-height: 32px;
+    }
+}
+
+@media (max-width:768px) {
+
+    .annual-reports-section {
+        padding: 20px 0px;
+    }
+
+    .annual-reports-wrapper .section-title-cta-wrapper {
+        gap: 0px;
+    }
+}
+
+@media (max-width:400px) {
+
+
+    .report-list-item-content h3 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+}

@@ -46,6 +46,7 @@
     padding-left: 24px;
     transition: all 0.3s ease;
     transform: translateX(0px);
+    white-space: nowrap;
 }
 
 .primary-button::before,
@@ -123,4 +124,13 @@
 
 .download-button-wrapper .download-button {
     width: calc(100% - 60px);
+}
+
+
+@media (max-width: 767px) {
+
+    .primary-button,
+    .download-button {
+        font-size: 16px;
+    }
 }
