@@ -185,5 +185,17 @@
 
     .about-trustee-info h3 {
         text-align: start;
+        font-size: 22px;
+        line-height: 26px;
+    }
+
+    .about-trustee-info h5 {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .about-trustee-description {
+        font-size: 18px;
+        line-height: 26px;
     }
 }

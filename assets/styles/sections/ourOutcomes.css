@@ -334,12 +334,12 @@
 
     .outcomes-marquee-track {
         gap: 16px;
-        animation-duration: 18s;
+        animation-duration: 42s;
     }
 
     .outcomes-marquee-item {
-        width: 200px;
-        height: 135px;
+        width: 250px;
+        height: 185px;
         border-radius: 14px;
     }
 

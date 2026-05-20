@@ -15,6 +15,67 @@
     transition: .35s ease;
 }
 
+.quality-education-card {
+    --hover-bg: #C5192D;
+}
+
+.zero-hunger-card {
+    --hover-bg: #DDA63A;
+}
+
+.reduced-inequalities-card {
+    --hover-bg: #DD1367;
+}
+
+.financial-card {
+    --hover-bg: #017CC1;
+}
+
+.manufacturing-card {
+    --hover-bg: #EF4023;
+}
+
+.energy-card {
+    --hover-bg: #D8A928;
+}
+
+.healthcare-card {
+    --hover-bg: #4C9F38;
+}
+
+.mobility-card {
+    --hover-bg: #D72638;
+}
+
+.sustainability-card {
+    --hover-bg: #F05A28;
+}
+
+.advanced-tech-card {
+    --hover-bg: #FFC107;
+}
+
+.infrastructure-card {
+    --hover-bg: #E91E63;
+}
+
+.consumer-card {
+    --hover-bg: #F7931E;
+}
+
+.education-card {
+    --hover-bg: #2E7D32;
+}
+
+.real-estate-card {
+    --hover-bg: #7CB342;
+}
+
+.climate-action-card {
+    --hover-bg: #3F7E44;
+}
+
+
 .customCard:hover .customCard-shape {
     color: var(--hover-bg);
 }
@@ -40,11 +101,9 @@
     position: absolute;
 
     inset: 0;
-
     z-index: 2;
-
     /* padding: 58px 78px 82px 78px; */
-    padding: 43px 58px 65px 58px;
+    padding: 53px 58px 65px 63px;
     display: flex;
     flex-direction: column;
 }
@@ -54,6 +113,11 @@
     width: 220px;
     height: auto;
     margin-bottom: 28px;
+}
+
+.customCard-icon svg {
+    max-width: 70px;
+    max-height: 70px;
 }
 
 .customCard-title {
@@ -99,8 +163,8 @@
 
 .customCard-button {
     position: absolute;
-    right: 37px;
-    bottom: 57px;
+    right: 40px;
+    bottom: 52px;
     border: none;
     color: var(--text);
     font-size: 32px;
@@ -108,14 +172,16 @@
     transition: .35s ease;
 }
 
+.customCard-button svg {
+    width: 24px;
+    height: 24px;
+}
+
 .customCard-icon {
     color: var(--text);
     transition: .35s ease;
 }
 
-.customCard:hover .customCard-shape {
-    color: var(--hover-bg);
-}
 
 .customCard:hover .customCard-title,
 .customCard:hover .customCard-description,
@@ -126,4 +192,22 @@
 .customCard:hover .customCard-button,
 .customCard:hover .customCard-icon {
     color: white;
+}
+
+@media screen and (max-width: 991px) {
+
+    .customCard-shape {
+        color: var(--hover-bg);
+    }
+
+    .customCard-title,
+    .customCard-description,
+    .customCard-link {
+        color: var(--hover-text);
+    }
+
+    .customCard-button,
+    .customCard-icon {
+        color: var(--hover-text);
+    }
 }

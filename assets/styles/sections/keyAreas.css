@@ -6,6 +6,9 @@
     /* background-color: rgba(255, 228, 196, 0.466); */
 }
 
+.key-areas-slider-stack-wrapper {
+    position: relative;
+}
 
 .key-areas-info-wrapper {
     position: relative;
@@ -20,7 +23,7 @@
 
 .key-areas-section-info {
     width: 100%;
-    padding: 220px 0;
+    /* padding: 220px 0; */
     /* max-width: 430px; */
 }
 
@@ -69,27 +72,50 @@
     margin-left: -72px;
 }
 
+
+
+.hide-desktop {
+
+    display: none;
+}
+
+
 @media (min-width: 1024px) {
+
     .key-areas-section {
         display: grid;
-        grid-template-columns: minmax(520px, 650px) minmax(0, 1fr);
+        grid-template-columns: minmax(320px, 700px) minmax(0, 1fr);
         column-gap: clamp(32px, 5vw, 96px);
         row-gap: 0;
         align-items: start;
     }
 
-    .key-areas-info-wrapper {
+
+    /* .key-areas-info-wrapper {
         position: sticky;
         top: 20px;
-        left: 112px;
+        left: 0px;
         align-self: start;
         padding-right: 24px;
         width: 550px;
+    } */
+
+    .key-areas-info-wrapper {
+        position: sticky;
+        top: 0px;
+        left: 0px;
+        height: 100vh;
+        align-items: center;
+        display: flex;
+        width: 550px;
+        align-self: start;
+        padding-right: 24px;
+        padding-left: 24px;
     }
 
     .key-areas-slider-wrapper {
         min-height: 100vh;
-        padding-left: 100px;
+        padding-left: 50px;
     }
 
     .stackCardsSection {
@@ -116,5 +142,320 @@
         transform-origin: center center;
         will-change: transform, opacity;
         transition: none;
+    }
+
+
+}
+
+
+@media (min-width: 1550px) {
+    .key-areas-section {
+        grid-template-columns: minmax(320px, 750px) minmax(0, 1fr);
+        column-gap: clamp(32px, 5vw, 96px);
+
+    }
+}
+
+
+@media (max-width: 1550px) {
+
+    .key-areas-section {
+        column-gap: clamp(32px, 1vw, 96px);
+    }
+
+    .key-areas-slider-wrapper {
+        padding-left: 0;
+    }
+
+}
+
+@media (max-width: 1380px) {
+
+    .key-areas-section {
+        column-gap: clamp(32px, 1vw, 96px);
+    }
+
+    .key-areas-section .key-areas-info-wrapper {
+        padding-left: 0;
+    }
+
+    .key-areas-slider-wrapper {
+        padding-left: 0px;
+    }
+
+    .key-areas-section-description p {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .key-areas-section {
+        grid-template-columns: minmax(320px, 700px) minmax(0, 1fr);
+    }
+
+    .customCard-title {
+
+        font-size: 30px;
+        line-height: 34px;
+        margin-bottom: 24px;
+    }
+
+    .customCard-description {
+        font-size: 14px;
+        line-height: 21.5px;
+    }
+
+    .customCard-icon svg {
+        max-width: 90px;
+    }
+
+    .customCard {
+        width: 380px;
+    }
+
+    .customCard-content {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        /* padding: 58px 78px 82px 78px; */
+        padding: 35px 38px 50px 41px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .customCard-button {
+        right: 31px;
+        bottom: 40px;
+    }
+
+    .customCard-button svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .customCard-icon {
+
+        margin-bottom: 0px;
+    }
+
+    .customCard-link {
+        font-size: 12px;
+    }
+
+    .key-areas-slider-stack-wrapper .customCard {
+
+        width: 380px;
+    }
+
+}
+
+
+@media (max-width: 1320px) {
+    .key-areas-info-wrapper {
+        width: 450px;
+    }
+
+    .key-areas-section {
+        grid-template-columns: minmax(320px, 600px) minmax(0, 1fr);
+
+    }
+
+    .customCard-button {
+        right: 34px;
+        bottom: 45px;
+    }
+}
+
+
+@media (max-width: 1220px) {
+
+    .key-areas-section {
+        grid-template-columns: minmax(320px, 600px) minmax(0, 1fr);
+    }
+
+    .stackCardsSection {
+        padding: 0px 0px 0 60px;
+    }
+
+    .key-areas-section {
+        column-gap: 60px;
+    }
+
+    .key-areas-section .key-areas-info-wrapper {
+        padding-right: 0;
+        padding-left: 50px;
+    }
+}
+
+
+@media (max-width: 1023px) {
+
+    .key-areas-section.desktop {
+        display: none;
+
+    }
+
+    .key-areas-section.mobile,
+    .hide-desktop {
+        display: block;
+    }
+
+
+    .key-areas-section .key-areas-info-wrapper {
+
+        padding-left: 0px;
+    }
+
+    .key-areas-slider-stack-wrapper .key-areas-section {
+        gap: 32px;
+        padding: 80px 0 32px;
+    }
+
+    .key-areas-slider-stack-wrapper .ms-12 {
+        margin-inline-start: 0;
+    }
+
+    .key-areas-slider-stack-wrapper .key-areas-info-wrapper {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .key-areas-slider-stack-wrapper .key-areas-section-info {
+        padding: 0;
+    }
+
+    .key-areas-slider-stack-wrapper .key-areas-slider-wrapper {
+        min-height: auto;
+        padding-left: 0;
+    }
+
+    .key-areas-slider-stack-wrapper .stackCardsSection {
+        position: relative;
+        top: auto;
+        height: auto;
+        overflow: visible;
+        padding: 0;
+    }
+
+    .key-areas-slider-stack-wrapper .customCard-wrapper {
+        width: 100%;
+        max-width: 100%;
+        padding-inline: 0;
+        padding-top: 52px;
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .key-areas-section .customCard+.customCard {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 767px) {
+    .key-areas-slider-stack-wrapper .key-areas-section {
+        gap: 24px;
+    }
+
+    .key-areas-slider-stack-wrapper .key-areas-section-info .section-title__heading {
+        font-size: 30px;
+        line-height: 36px;
+        margin-bottom: 24px;
+    }
+
+    .key-areas-slider-stack-wrapper .key-areas-section-description p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+
+    .customCard-title {
+        margin-bottom: 34px;
+        font-size: 28px;
+        line-height: 32px;
+
+    }
+
+    .customCard-content {
+
+        padding: 35px 48px 55px 51px;
+    }
+
+    .customCard-icon {
+        margin-bottom: 18px;
+    }
+
+    .customCard-icon svg {
+        max-width: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .key-areas-slider-stack-wrapper .key-areas-section {
+        gap: 20px;
+        padding-top: 24px;
+    }
+
+    .key-areas-slider-stack-wrapper .ms-12 {
+        width: 100%;
+    }
+
+    .key-areas-slider-stack-wrapper .key-areas-section-info .section-title__heading {
+        font-size: 26px;
+        line-height: 32px;
+        margin-bottom: 20px;
+    }
+
+    .key-areas-slider-stack-wrapper .key-areas-section-description p {
+        font-size: 15px;
+        line-height: 23px;
+    }
+
+}
+
+
+@media (max-width: 350px) {
+    .key-areas-slider-stack-wrapper .customCard {
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: unset;
+        height: 300px;
+    }
+
+    .customCard-icon svg {
+
+        max-height: 40px;
+    }
+
+    .customCard-icon {
+        margin-bottom: 8px;
+    }
+
+    .customCard-content {
+        padding: 25px 35px 35px 35px;
+    }
+
+    .customCard-title {
+        margin-bottom: 15px;
+        font-size: 20px;
+        line-height: 23px;
+    }
+
+    .customCard-description {
+        font-size: 12px;
+        line-height: 16.5px;
+    }
+
+    .customCard-link {
+        font-size: 10px;
+    }
+
+    .customCard-button {
+        right: 25px;
+        bottom: 28px;
+    }
+
+    .customCard-button svg {
+        width: 15px;
+        height: 15px;
     }
 }
