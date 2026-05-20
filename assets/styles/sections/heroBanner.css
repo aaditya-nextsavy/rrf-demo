@@ -120,7 +120,7 @@
 
 
 .herobanner-hero-title-wrapper {
-    z-index: 1;
+    z-index: 3;
     position: relative;
     display: flex;
     height: 100%;
@@ -413,7 +413,7 @@
 
 
     .hero-banner-abstract-wrapper {
-        height: 400px;
+        height: 420px;
         min-height: unset;
     }
 
@@ -423,7 +423,7 @@
     }
 
     .herobanner-hero-title {
-        padding-bottom: 120px;
+        padding-bottom: 140px;
     }
 
     .herobanner-hero-title h3 {
