@@ -127,10 +127,76 @@
 }
 
 
+.scroll-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 45px;
+    height: 45px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    background: var(--color-primary-blue);
+    color: var(--color-white);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    z-index: calc(var(--z-modal) + 10);
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scroll-to-top.is-visible {
+    display: flex;
+    transition: all 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    background: var(--color-primary-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+}
+
+.scroll-to-top:focus-visible {
+    outline: 2px solid var(--color-primary-orange);
+    outline-offset: 3px;
+}
+
+.scroll-to-top__icon {
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+
+
+
+@media (max-width: 1280px) {
+
+    .header-wrapper {
+        gap: 32px;
+    }
+
+    .primary-button,
+    .download-button {
+        font-size: 16px;
+
+    }
+
+    .header-menu {
+        gap: 22px;
+    }
+}
+
 @media (max-width: 767px) {
 
     .primary-button,
     .download-button {
         font-size: 16px;
+    }
+
+    .scroll-to-top {
+        right: 20px;
+        bottom: 20px;
     }
 }

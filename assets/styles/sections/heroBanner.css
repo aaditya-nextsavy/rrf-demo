@@ -433,6 +433,7 @@
     .herobanner-hero-title h1 {
         font-size: 44px;
         line-height: 48px;
+        letter-spacing: -1px;
     }
 
     .hero-hands-animation-image-wrapper {
@@ -488,4 +489,23 @@
     .hero-hands-animation-sub-image {
         bottom: 55px;
     }
+}
+
+@media (max-width: 350px) {
+    .hero-hands-animation-image svg {
+        max-width: 220px;
+        margin-bottom: 50px;
+        /* max-height: 220px; */
+    }
+
+    .hero-hands-animation-sub-image {
+        bottom: 115px;
+        left: 170px;
+    }
+
+    .hero-hands-animation-sub-image svg {
+        max-width: 80px;
+    }
+
+
 }

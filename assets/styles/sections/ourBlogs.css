@@ -191,6 +191,22 @@
     opacity: 0.7;
 }
 
+
+@media (max-width: 1500px) {
+
+    .our-blogs-info .section-breif-cta,
+    .annual-report-info .section-breif-cta {
+        max-width: 640px;
+
+    }
+
+    .our-blogs-info .section-breif-cta p,
+    .annual-report-info .section-breif-cta p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
 @media (max-width: 1300px) {
     .our-blog-card-title a {
         font-size: 28px;
@@ -203,6 +219,11 @@
 
     .our-blogs-content-wrapper {
         gap: 52px;
+    }
+
+    .our-blogs-info .section-breif-cta {
+        max-width: 640px;
+        font-size: 16px;
     }
 }
 
