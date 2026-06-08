@@ -6,6 +6,11 @@
     overflow: hidden;
 }
 
+.event-details-page.our-blogs-section {
+    background: #FFFFFF;
+    padding-bottom: 0;
+}
+
 .our-blogs-abstract-border {
     position: absolute;
     height: auto;

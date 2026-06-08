@@ -1,0 +1,53 @@
+.general-page-description p {
+
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 0px;
+    text-align: justify;
+    text-transform: capitalize;
+
+}
+
+.general-page-description ul li {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: capitalize;
+    color: var(--color-primary-blue);
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 34px;
+}
+
+.general-page-description ul li:last-child {
+    margin-bottom: 10px;
+}
+
+.general-page-description ul li::before {
+    content: url('../../media/icons/ul-li-bullet.svg');
+    width: 15px;
+    height: 15px;
+    top: 2px;
+    left: 0;
+    position: absolute;
+}
+
+
+
+@media (max-width:1440px) {
+    .general-page-description p {
+
+        font-size: 16px;
+        line-height: 23px;
+    }
+}
+
+
+
+@media (max-width:1204px) {
+    .general-page-description p {
+        letter-spacing: 0.35px;
+    }
+}

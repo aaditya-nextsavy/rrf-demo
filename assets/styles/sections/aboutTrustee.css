@@ -17,6 +17,7 @@
     justify-content: center;
     align-items: start;
     gap: 48px;
+    z-index: 1;
 }
 
 .about-trustee-description {
@@ -24,6 +25,7 @@
     font-size: 32px;
     line-height: 42px;
     letter-spacing: -0.5px;
+    max-width: 63%;
 }
 
 .about-trustee-info {
@@ -58,14 +60,24 @@
     left: 60px;
 }
 
-
+/* 
 .trustee-image {
     width: 500px;
-    height: 450px;
+    height: 500px;
+    aspect-ratio: 1/1;
+    background: #FFFFFF;
+    border: 8px solid #FFFFFF;
+    border-radius: 50%;
+    overflow: hidden;
+} */
 
 
+.trustee-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    margin-bottom: -20px;
 }
-
 
 .trustee-image-wrapper img {
     object-fit: contain;
@@ -88,7 +100,7 @@
     }
 
     .trustee-image {
-        width: 450px;
+        width: 400px;
         height: 400px;
     }
 
@@ -99,6 +111,7 @@
         position: absolute;
         top: -85px;
         left: 60px;
+        z-index: 2;
     }
 }
 
@@ -121,7 +134,7 @@
     }
 
     .trustee-image {
-        width: 550px;
+        width: 350px;
         height: auto;
     }
 }
@@ -153,6 +166,19 @@
         font-size: 22px;
         line-height: 31px;
     }
+}
+
+
+
+
+@media (max-width: 991px) {
+    .about-trustee-wrapper {
+        gap: 20px;
+        border-radius: 12px;
+    }
+
+
+
 }
 
 

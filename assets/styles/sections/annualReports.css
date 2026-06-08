@@ -2,6 +2,10 @@
     padding: 120px 0;
 }
 
+.notfound-page.annual-reports-section {
+    padding: 60px 0;
+}
+
 .annual-reports-wrapper {
     display: flex;
     flex-direction: column;
@@ -15,6 +19,7 @@
 
 .reports-list-wrapper {
     width: 100%;
+    position: relative;
 }
 
 .report-list-item {
@@ -25,6 +30,16 @@
     gap: 24px;
     padding: 42px 0;
     position: relative;
+    transition: all 0.3s ease;
+}
+
+.report-list-item.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.report-list-item.show {
+    opacity: 1;
 }
 
 /* custom dashed border */
@@ -46,7 +61,7 @@
             transparent 10px);
 }
 
-.report-list-item:last-child::after {
+.reports-list-wrapper::after {
     content: "";
 
     position: absolute;
@@ -61,7 +76,26 @@
             var(--color-primary-blue) 5px,
             transparent 5px,
             transparent 10px);
+
 }
+
+
+/* .report-list-item:last-child::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background-image: repeating-linear-gradient(to right,
+            var(--color-primary-blue) 0px,
+            var(--color-primary-blue) 5px,
+            transparent 5px,
+            transparent 10px);
+} */
 
 
 
@@ -88,6 +122,10 @@
     text-transform: capitalize;
 
     color: var(--color-primary-blue);
+}
+
+.page-notfound .report-list-item-content p {
+    line-height: 28px;
 }
 
 .report-list-item .download-button-wrapper {
@@ -182,6 +220,12 @@
     .annual-reports-wrapper .section-title-cta-wrapper {
         gap: 0px;
     }
+
+    .report-list-item {
+        padding: 30px 0;
+        gap: 18px;
+    }
+
 }
 
 @media (max-width:400px) {
@@ -190,5 +234,117 @@
     .report-list-item-content h3 {
         font-size: 26px;
         line-height: 30px;
+    }
+
+
+
+}
+
+
+
+.annual-reports-wrapper.with-filters {
+    gap: 32px;
+}
+
+.annual-reports-filter-wrapper {
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.annual-reports-filter-wrapper .year-filter {
+    display: flex;
+    gap: 5px;
+}
+
+.annual-reports-filter-wrapper .year-span {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color: var(--color-primary-blue);
+    background: var(--color-white);
+    transition: all 0.3s ease;
+    padding: 16px 24px;
+    border: 1px solid #017CC1;
+    border-radius: 403px;
+    cursor: pointer;
+}
+
+.annual-reports-filter-wrapper .year-span:hover {
+    background: #017bc18e;
+    color: var(--color-white);
+}
+
+.annual-reports-filter-wrapper .year-span.active {
+    background: var(--color-primary-blue);
+    color: var(--color-white);
+}
+
+.annual-reports-count {
+    font-weight: 600;
+    color: var(--color-primary-blue);
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+}
+
+
+@media (max-width:1280px) {
+    .annual-reports-filter-wrapper .year-span {
+        font-size: 16px;
+        padding: 14px 22px;
+    }
+
+    .annual-reports-count {
+        font-size: 16px;
+
+    }
+}
+
+
+@media (max-width:768px) {
+
+    .annual-reports-section {
+        padding-top: 40px;
+    }
+
+    .annual-reports-filter-wrapper {
+        flex-direction: column;
+        align-items: start;
+        gap: 14px;
+    }
+
+    .annual-reports-filter-wrapper .year-filter {
+        flex-wrap: wrap;
+    }
+
+    .annual-reports-count {
+        font-size: 14px;
+
+    }
+
+    .annual-reports-wrapper.with-filters {
+        gap: 24px;
+    }
+
+}
+
+
+@media (max-width:440px) {
+
+    .annual-reports-filter-wrapper .year-span {
+        font-size: 14px;
+        padding: 14px 18px;
+    }
+}
+
+
+@media (max-width:1000px) {
+    .page-notfound .report-list-item-content {
+        max-width: 100%;
     }
 }

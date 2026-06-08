@@ -69,7 +69,8 @@
 }
 
 .key-areas-section .customCard+.customCard {
-    margin-left: -72px;
+    /* margin-left: -32px; */
+    margin-left: 0px;
 }
 
 
@@ -119,7 +120,7 @@
 
     .key-areas-slider-wrapper {
         min-height: 100vh;
-        padding-left: 50px;
+        padding-left: 0px;
     }
 
     .stackCardsSection {
@@ -129,7 +130,7 @@
         overflow: hidden;
         padding: 0;
         display: block;
-        padding: 0 60px;
+        /* padding: 0 60px; */
     }
 
     .key-areas-section .customCard-wrapper {
@@ -312,7 +313,7 @@
 
     .key-areas-slider-stack-wrapper .key-areas-section {
         gap: 32px;
-        padding: 80px 0 32px;
+        padding: 60px 0 32px;
     }
 
     .key-areas-slider-stack-wrapper .ms-12 {

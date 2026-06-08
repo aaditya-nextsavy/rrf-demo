@@ -7,7 +7,7 @@
 @import url("./components/footer.css");
 @import url("./components/slidercard.css");
 @import url("./components/footer.css");
-
+@import url("./components/faqs.css");
 
 
 
@@ -20,3 +20,9 @@
 @import url("./sections/ourBlogs.css");
 @import url("./sections/annualReports.css");
 @import url("./sections/keyAreas.css");
+@import url("./sections/general-page.css");
+@import url("./sections/events-listing.css");
+@import url("./sections/service-details.css");
+@import url("./sections/services-cards.css");
+@import url("./sections/about.css");
+@import url("./sections/mission-vision.css");
