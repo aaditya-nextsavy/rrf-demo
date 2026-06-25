@@ -718,6 +718,10 @@
         width: 100%;
     }
 
+    .herobanner-hero-title.big-title {
+        max-width: 100%;
+    }
+
 }
 
 @media(max-width:1024px) {
