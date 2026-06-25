@@ -677,6 +677,10 @@
 
 }
 
+
+
+
+
 @media(max-width:1280px) {
     .hero-title-description-wrapper {
         flex-direction: column;
@@ -725,6 +729,17 @@
     }
 
 }
+
+@media (min-width:769px) and (max-width:1280px) {
+
+    .page-hero-banner .herobanner-hero-title h1 {
+        white-space: nowrap;
+    }
+
+
+}
+
+
 
 
 @media(max-width:768px) {

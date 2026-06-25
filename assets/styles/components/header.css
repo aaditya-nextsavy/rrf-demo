@@ -42,7 +42,7 @@
 .header-menu {
     display: flex;
     align-items: center;
-    gap: 48px;
+    gap: 34px;
 }
 
 .header-menu a {
@@ -80,6 +80,8 @@
 .header-menu a.active::after {
     width: 100%;
 }
+
+
 
 
 .menu-toggle {
@@ -180,7 +182,7 @@ body.menu-open {
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
 
     .site-header {
         padding-block: 16px;
@@ -320,5 +322,75 @@ body.menu-open {
         width: 30px;
         height: 10px;
     }
+
+}
+
+
+@media (max-width:1280px) {
+
+
+    .header-menu a {
+        display: flex;
+        font-size: 18px;
+        line-height: 1.1;
+        padding: 24px 24px 24px 60px;
+        border-bottom: 1px solid #dddddd;
+    }
+
+
+    .header-menu a::after {
+        width: 30px;
+    }
+
+    .header-menu a:hover::after,
+    .header-menu a.active::after {
+        width: 30px;
+    }
+
+    .header-menu a::after {
+        width: 30px;
+    }
+}
+
+
+
+
+@media (min-width:1199px) and (max-width: 1280px) {
+    .menu-toggle {
+        width: 1px;
+    }
+}
+
+@media(max-width: 1200px) {
+    .menu-toggle {
+        width: 30px;
+    }
+}
+
+
+
+@media (max-width:768px) {
+    .header-menu a::after {
+        width: 20px;
+    }
+
+    .header-menu a:hover::after,
+    .header-menu a.active::after {
+        width: 20px;
+    }
+}
+
+
+
+
+@media (max-width: 768px) {
+    .header-menu a {
+        padding: 24px;
+    }
+
+    .header-menu a::after {
+        right: 24px;
+    }
+
 
 }

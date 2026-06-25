@@ -562,7 +562,7 @@
 }
 
 .rf-footer-brand {
-    max-width: 365px;
+    max-width: 600px;
     flex-shrink: 0;
 }
 
@@ -581,8 +581,8 @@
 
     color: var(--color-white);
     font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
+    font-size: 16px;
+    line-height: 26px;
     letter-spacing: -0.3%;
     text-transform: capitalize;
 
@@ -762,6 +762,19 @@
 
 }
 
+@media screen and (max-width: 1280px) {
+
+    .rf-footer-content {
+        gap: 50px;
+    }
+
+    .rf-footer-links-wrapper {
+        gap: 20px;
+    }
+
+
+}
+
 @media screen and (max-width: 1199px) {
 
     .rf-footer {
@@ -812,7 +825,8 @@
     }
 
     .rf-footer-links-wrapper {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 32px;
     }
 
@@ -865,6 +879,24 @@
     }
 }
 
+
+
+
+@media (max-width:450px) {
+
+    .rf-footer-links-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .rf-footer-brand-wrapper {
+        width: 100%;
+    }
+
+  
+}
+
 @media screen and (max-width:400px) {
 
     .footer-contact-info-content a,
@@ -887,4 +919,73 @@
 .contact-page-form-info .footer-contact-info-wrapper {
     padding-top: 0px;
     margin: 0;
+}
+
+
+.form-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 22px;
+    width: 100%;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.form-checkbox-item {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: start;
+    gap: 8px;
+    cursor: pointer;
+
+    font-size: 18px;
+    font-weight: 300;
+    color: #017CC1;
+
+
+    color: var(--color-primary-blue);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: -0.5px;
+
+}
+
+.form-checkbox-item input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 14px;
+    height: 14px;
+    padding: 2px;
+    border: 1px solid #017CC1;
+    border-radius: 50%;
+    background: #fff;
+
+    cursor: pointer;
+    position: relative;
+}
+
+.form-checkbox-item input[type="radio"]:checked {
+    /* background: #017CC1; */
+    border-color: #017CC1;
+}
+
+
+.form-checkbox-item input[type="radio"]::after {
+    transition: all 0.35s ease;
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-checkbox-item input[type="radio"]:checked::after {
+    background: #017CC1;
 }

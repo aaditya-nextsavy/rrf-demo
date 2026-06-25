@@ -189,6 +189,12 @@ img {
     box-sizing: border-box;
 }
 
+@media (min-width: 320px) {
+    .container {
+        padding-inline: 24px;
+    }
+}
+
 @media (min-width: 768px) {
     .container {
         padding-inline: 48px;
@@ -503,7 +509,3 @@ img {
         max-width: 100%;
     }
 }
-
-
-
-

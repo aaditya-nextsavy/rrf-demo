@@ -28,6 +28,7 @@
 
     cursor: pointer;
     transition: .35s ease;
+    overflow: hidden;
 }
 
 /* CARD COLORS */
@@ -91,10 +92,11 @@
 
     color: var(--card-color);
 
-    transition: .35s ease;
+    transition: 0.35s ease;
 
     filter:
-        drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08));
+        brightness(1) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08));
+
 }
 
 
@@ -105,6 +107,14 @@
 
 /* CONTENT */
 .services-custom-card-content {
+
+    --card-bg: #ffffff;
+    --text: #ffffff;
+    --hover-bg: #EF4023;
+    --hover-text: #ffffff;
+    --card-color: var(--hover-bg);
+
+
     position: absolute;
     inset: 0;
     z-index: 2;
@@ -214,7 +224,7 @@
     border-radius: 50%;
 
     color: white;
-
+    transition: all 0.4s ease;
     z-index: 3;
 }
 
@@ -243,7 +253,7 @@
 
     .services-custom-card-title {
         margin-bottom: 22px;
-        font-size: 44px;
+        font-size: 36px;
         line-height: 44px;
     }
 
@@ -708,4 +718,35 @@
         gap: 40px;
     }
 
+}
+
+
+.services-cards-wrapper .services-custom-card {
+    transition: all 0.4s ease;
+}
+
+
+
+
+
+.services-cards-wrapper .services-custom-card:hover {
+    transform: scale(1.05) translateY(-10px);
+    /* --card-color: color-mix(in srgb,
+            var(--card-color) 100%,
+            black); */
+
+}
+
+
+.services-custom-card .services-custom-card-shape {
+    transition: all 0.4s ease;
+}
+
+.services-custom-card:hover .services-custom-card-shape {
+    filter:
+        brightness(0.82) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08));
+}
+
+.services-custom-card:hover .services-custom-card-button {
+    transform: rotate(90deg);
 }
