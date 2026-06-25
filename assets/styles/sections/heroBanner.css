@@ -560,8 +560,8 @@
 
 .page-hero-banner .herobanner-hero-title h1 {
     font-weight: 900;
-    font-size: 72px;
-    line-height: 72px;
+    font-size: 64px;
+    line-height: 70px;
     letter-spacing: -3px;
     text-transform: uppercase;
 
@@ -664,6 +664,27 @@
 
 }
 
+
+
+
+@media(min-width:1381px) and (max-width:1440px) {
+    .herobanner-hero-title.big-title {
+        max-width: 100%;
+    }
+
+    .page-hero-banner .herobanner-hero-title.big-title h1 {
+        white-space: unset !important;
+    }
+
+    .big-title-banner .banner-large-image {
+        margin-top: -150px;
+
+    }
+}
+
+
+
+
 @media(max-width:1380px) {
     .page-hero-banner .herobanner-hero-description p {
         font-size: 16px;
@@ -736,6 +757,9 @@
         white-space: nowrap;
     }
 
+    .page-hero-banner .herobanner-hero-title.big-title h1 {
+        white-space: unset !important;
+    }
 
 }
 
