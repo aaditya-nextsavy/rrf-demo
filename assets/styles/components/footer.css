@@ -894,7 +894,7 @@
         width: 100%;
     }
 
-  
+
 }
 
 @media screen and (max-width:400px) {
@@ -955,7 +955,7 @@
 .form-checkbox-item input[type="radio"] {
     appearance: none;
     -webkit-appearance: none;
-
+    aspect-ratio: 1;
     width: 14px;
     height: 14px;
     padding: 2px;
