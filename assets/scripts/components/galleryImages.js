@@ -221,75 +221,61 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileCheckboxes =
         document.querySelectorAll(".gallery-mobile-filter input");
 
-    const applyButton =
-        document.querySelector(".gallery-apply-filter");
-
     // Only allow one checkbox to be selected
     mobileCheckboxes.forEach(cb => {
 
         cb.addEventListener("change", () => {
 
-            if (cb.checked) {
-                mobileCheckboxes.forEach(other => {
-                    if (other !== cb) {
-                        other.checked = false;
-                    }
-                });
-            } else {
-                // Prevent having nothing selected
+            if (!cb.checked) {
                 cb.checked = true;
+                return;
             }
 
-        });
+            // Uncheck others
+            mobileCheckboxes.forEach(other => {
+                if (other !== cb) {
+                    other.checked = false;
+                }
+            });
 
-    });
+            const filterValue = cb.value;
 
-    if (applyButton) {
+            // Update button text
+            if (triggerText) {
+                triggerText.textContent =
+                    cb.closest(".gallery-mobile-filter")
+                        .querySelector("span").textContent;
+            }
 
-        applyButton.addEventListener("click", () => {
+            // Sync desktop
+            checkboxes.forEach(desktopCb => {
 
-            const selected =
-                document.querySelector(".gallery-mobile-filter input:checked");
+                const isMatch = desktopCb.value === filterValue;
 
-            const filterValue = selected ? selected.value : "*";
+                desktopCb.checked = isMatch;
 
+                desktopCb.closest(".gallery-filter-item")
+                    .classList.toggle("active", isMatch);
+
+            });
+
+            // Close dropdown
+            dropdown.classList.remove("open");
+
+            // Scroll to gallery
             const delay = scrollToGallery();
 
+            // Apply filter
             setTimeout(() => {
 
-                // Apply Isotope filter
                 iso.arrange({
                     filter: filterValue
                 });
 
-                // Update trigger text
-                if (selected) {
-                    triggerText.textContent =
-                        selected.closest(".gallery-mobile-filter")
-                            .querySelector("span").textContent;
-                } else {
-                    triggerText.textContent = "Filters";
-                }
-
-                // Sync desktop sidebar
-                checkboxes.forEach(cb => {
-
-                    const isMatch = cb.value === filterValue;
-
-                    cb.checked = isMatch;
-
-                    cb.closest(".gallery-filter-item")
-                        .classList.toggle("active", isMatch);
-
-                });
-
             }, delay);
-
-            // Close dropdown immediately
-            dropdown.classList.remove("open");
 
         });
 
-    }
+    });
 
 });
