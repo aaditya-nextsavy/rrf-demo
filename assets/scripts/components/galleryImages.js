@@ -1,6 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+
+    const gallerySection = document.querySelector(".gallery-filter-section");
+    function scrollToGallery() {
+
+        if (!gallerySection) return 150;
+
+        const offset = 100;
+
+        const sectionTop = gallerySection.offsetTop;
+        const sectionHeight = gallerySection.offsetHeight;
+
+        const currentScroll = window.scrollY;
+
+        // 0 = top of section, 1 = bottom of section
+        const progress = (currentScroll - sectionTop) / sectionHeight;
+
+        window.scrollTo({
+            top: sectionTop - offset,
+            behavior: "smooth"
+        });
+
+        // Return a delay based on how far down the section the user is
+        return progress > 0.6 ? 450 : 150;
+
+    }
+
+
+
     const grid = document.querySelector(".gallery-grid-js");
+
+
 
     const iso = new Isotope(grid, {
         itemSelector: ".gallery-grid-item",
@@ -26,10 +56,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const filterValue = this.value;
 
-            // Update Isotope
-            iso.arrange({
-                filter: filterValue
-            });
+
+
+
+            const delay = scrollToGallery();
+
+            setTimeout(() => {
+                iso.arrange({
+                    filter: filterValue
+                });
+            }, delay);
 
             // Sync desktop checkboxes
             checkboxes.forEach((cb) => {
@@ -52,67 +88,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
         checkbox.addEventListener("change", () => {
 
-            const allSnapshots = document.querySelector(
-                '.gallery-filter-sidebar input[value="*"]'
-            );
+            if (checkbox.checked) {
 
-            if (checkbox.value === "*" && checkbox.checked) {
-
-                // All Snapshots selected → uncheck everything else
-                checkboxes.forEach((cb) => {
-
-                    if (cb.value !== "*") {
+                // Uncheck every other option
+                checkboxes.forEach(cb => {
+                    if (cb !== checkbox) {
                         cb.checked = false;
-                        cb.closest(".gallery-filter-item")
-                            .classList.remove("active");
                     }
-
                 });
 
-            } else if (checkbox.checked) {
+            } else {
 
-                // Any other filter selected → uncheck All Snapshots
-                allSnapshots.checked = false;
-                allSnapshots.closest(".gallery-filter-item")
-                    .classList.remove("active");
+                // Prevent having nothing selected
+                checkbox.checked = true;
 
             }
 
             // Update active classes
-            checkboxes.forEach((cb) => {
+            checkboxes.forEach(cb => {
 
                 cb.closest(".gallery-filter-item")
                     .classList.toggle("active", cb.checked);
 
             });
 
-            // If nothing is checked, restore All Snapshots
-            const anyChecked = [...checkboxes].some(cb => cb.checked);
+            // Apply selected filter
+            const selected =
+                document.querySelector(".gallery-filter-sidebar input:checked");
 
-            if (!anyChecked) {
+            const filterValue = selected ? selected.value : "*";
 
-                allSnapshots.checked = true;
-                allSnapshots.closest(".gallery-filter-item")
-                    .classList.add("active");
+            const delay = scrollToGallery();
 
-            }
+            setTimeout(() => {
+                iso.arrange({
+                    filter: filterValue
+                });
+            }, delay);
 
-            // Build Isotope filter
-            const activeFilters = [];
+            // Sync mobile
+            mobileCheckboxes.forEach(cb => {
+                cb.checked = cb.value === filterValue;
+            });
 
-            checkboxes.forEach((cb) => {
+            // Update mobile button text
+            if (triggerText) {
+                const mobileSelected = document.querySelector(
+                    `.gallery-mobile-filter input[value="${filterValue}"]`
+                );
 
-                if (cb.checked && cb.value !== "*") {
-                    activeFilters.push(cb.value);
+                if (mobileSelected) {
+                    triggerText.textContent =
+                        mobileSelected.closest(".gallery-mobile-filter")
+                            .querySelector("span").textContent;
                 }
-
-            });
-
-            iso.arrange({
-                filter: activeFilters.length
-                    ? activeFilters.join(",")
-                    : "*"
-            });
+            }
 
         });
 
@@ -131,7 +161,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const dropdown = document.querySelector(".gallery-custom-dropdown");
     const trigger = document.querySelector(".gallery-dropdown-trigger");
-    const triggerText = trigger.querySelector("span");
+    const triggerText = trigger?.querySelector("span");
+
     const options = document.querySelectorAll(".gallery-dropdown-option");
 
     if (dropdown && trigger) {
@@ -162,9 +193,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 dropdown.classList.remove("open");
 
-                iso.arrange({
-                    filter: filterValue
-                });
+                const delay = scrollToGallery();
+
+                setTimeout(() => {
+                    iso.arrange({
+                        filter: filterValue
+                    });
+                }, delay);
 
                 checkboxes.forEach(cb => {
 
@@ -189,31 +224,68 @@ document.addEventListener("DOMContentLoaded", () => {
     const applyButton =
         document.querySelector(".gallery-apply-filter");
 
+    // Only allow one checkbox to be selected
+    mobileCheckboxes.forEach(cb => {
+
+        cb.addEventListener("change", () => {
+
+            if (cb.checked) {
+                mobileCheckboxes.forEach(other => {
+                    if (other !== cb) {
+                        other.checked = false;
+                    }
+                });
+            } else {
+                // Prevent having nothing selected
+                cb.checked = true;
+            }
+
+        });
+
+    });
+
     if (applyButton) {
 
         applyButton.addEventListener("click", () => {
 
-            const allSnapshots =
-                document.querySelector(
-                    '.gallery-mobile-filter input[value="*"]'
-                );
+            const selected =
+                document.querySelector(".gallery-mobile-filter input:checked");
 
-            const activeFilters = [];
+            const filterValue = selected ? selected.value : "*";
 
-            mobileCheckboxes.forEach(cb => {
+            const delay = scrollToGallery();
 
-                if (cb.checked && cb.value !== "*") {
-                    activeFilters.push(cb.value);
+            setTimeout(() => {
+
+                // Apply Isotope filter
+                iso.arrange({
+                    filter: filterValue
+                });
+
+                // Update trigger text
+                if (selected) {
+                    triggerText.textContent =
+                        selected.closest(".gallery-mobile-filter")
+                            .querySelector("span").textContent;
+                } else {
+                    triggerText.textContent = "Filters";
                 }
 
-            });
+                // Sync desktop sidebar
+                checkboxes.forEach(cb => {
 
-            iso.arrange({
-                filter: activeFilters.length
-                    ? activeFilters.join(",")
-                    : "*"
-            });
+                    const isMatch = cb.value === filterValue;
 
+                    cb.checked = isMatch;
+
+                    cb.closest(".gallery-filter-item")
+                        .classList.toggle("active", isMatch);
+
+                });
+
+            }, delay);
+
+            // Close dropdown immediately
             dropdown.classList.remove("open");
 
         });
