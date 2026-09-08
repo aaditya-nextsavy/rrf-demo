@@ -47,7 +47,7 @@
 /* big number */
 .outcomes-stat strong {
     display: block;
-    font-size: 48px;
+    font-size: 44px;
     line-height: 37px;
     font-weight: 700;
     margin-bottom: 8px;
@@ -55,7 +55,7 @@
 
 .outcomes-stat span {
     display: block;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 9px;
     font-weight: 300;
     letter-spacing: -0.5px;

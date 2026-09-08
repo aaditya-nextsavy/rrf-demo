@@ -293,6 +293,26 @@
 }
 
 
+@media (min-width:1024px) and (max-width: 1220px) {
+    .key-areas-section .key-areas-info-wrapper {
+        /* padding-left: 0; */
+    }
+
+    .key-areas-section {
+        column-gap: 0px;
+    }
+
+    .stackCardsSection {
+        padding: 0px 0px 0 20px;
+    }
+
+    .key-areas-section {
+        grid-template-columns: minmax(80px, 490px) minmax(0, 1fr);
+    }
+
+}
+
+
 @media (max-width: 1023px) {
 
     .key-areas-section.desktop {

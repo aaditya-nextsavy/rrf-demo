@@ -34,7 +34,7 @@
 
 .section-breif-cta {
     width: 100%;
-    max-width: 593px;
+    max-width: 693px;
 }
 
 .section-breif-cta p {
@@ -146,6 +146,10 @@
     letter-spacing: -0.3px;
     text-transform: capitalize;
     margin: 0 0 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 
 }
 

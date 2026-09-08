@@ -50,6 +50,7 @@
 
 .gender-equality-card {
     --card-color: #FF3A21;
+
 }
 
 .clean-energy-card {
@@ -58,10 +59,12 @@
 
 .reduced-inequalities-card {
     --card-color: #DD1367;
+    --hover-bg: #DD1367;
 }
 
 .sustainable-cities-card {
     --card-color: #F99D26;
+    --hover-bg: #F99D26;
 }
 
 .climate-action-card {
@@ -70,6 +73,14 @@
 
 .life-on-land-card {
     --card-color: #56C02B;
+}
+
+.partnerships-card {
+    --card-color: #19486A;
+}
+
+.decent-work-card {
+    --card-color: #A21942;
 }
 
 .default-blue {

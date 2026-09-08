@@ -2,7 +2,7 @@
     overflow: hidden;
     padding: 61px 0 15px;
     position: relative;
-    background: linear-gradient(179.47deg, #FFFFFF 37.33%, #017CC1 90.7%);
+    background: linear-gradient(179.47deg, #FFFFFF 48.33%, #017CC1 90.7%);
     /* background: linear-gradient(180deg, #53A9DC 0%, #0074BD 100%); */
     display: flex;
     flex-direction: column;
@@ -946,8 +946,8 @@
 
     color: var(--color-primary-blue);
     font-weight: 700;
-    font-size: 12px;
-    line-height: 12px;
+    font-size: 16px;
+    line-height: 16px;
     letter-spacing: -0.5px;
 
 }

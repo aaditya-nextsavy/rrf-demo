@@ -153,8 +153,11 @@
     transform: translateX(-50%) rotate(-45deg);
 }
 
+html.menu-open,
 body.menu-open {
     overflow: hidden;
+    height: 100%;
+    overscroll-behavior: none;
 }
 
 
@@ -222,6 +225,9 @@ body.menu-open {
         padding: 0px 0px;
 
         overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
 
         opacity: 0;
         visibility: hidden;
@@ -235,6 +241,10 @@ body.menu-open {
             visibility 0.45s ease;
 
         z-index: 150;
+    }
+
+    .header-nav::-webkit-scrollbar {
+        display: none;
     }
 
     .menu-open .header-nav {
