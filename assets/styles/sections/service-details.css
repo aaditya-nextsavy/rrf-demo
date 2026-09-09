@@ -239,8 +239,138 @@
     border: 4px solid #FFFFFF;
     border-radius: 24px;
     overflow: hidden;
+    aspect-ratio: 1062 / 557;
 }
 
+.event-details-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+/* =========================
+   EVENT IMPACT SLIDER
+========================= */
+
+.event-details-image.event-impact-slider {
+    position: relative;
+    overflow: visible;
+}
+
+.event-impact-slider-viewport {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+    position: relative;
+}
+
+.event-impact-slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.45s ease;
+}
+
+.event-impact-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.event-impact-slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    background: #FFFFFF;
+    color: var(--color-primary-blue);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    z-index: 5;
+    padding: 0;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.event-impact-slider-nav svg {
+    width: 10px;
+    height: 16px;
+    display: block;
+}
+
+.event-impact-slider-nav.prev {
+    left: -20px;
+}
+
+.event-impact-slider-nav.next {
+    right: -20px;
+}
+
+.event-impact-slider-nav:hover {
+    background: var(--color-primary-blue);
+    color: #FFFFFF;
+}
+
+.event-impact-slider-nav:focus-visible {
+    outline: 2px solid var(--color-primary-blue);
+    outline-offset: 2px;
+}
+
+.event-impact-slider-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 5;
+}
+
+.event-impact-slider-dot {
+    width: 8px;
+    height: 8px;
+    border: 0;
+    border-radius: 999px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+.event-impact-slider-dot.is-active {
+    width: 22px;
+    background: var(--color-primary-blue);
+}
+
+@media (max-width: 767px) {
+    .event-impact-slider-nav {
+        width: 32px;
+        height: 32px;
+    }
+
+    .event-impact-slider-nav svg {
+        width: 8px;
+        height: 13px;
+    }
+
+    .event-impact-slider-nav.prev {
+        left: -16px;
+    }
+
+    .event-impact-slider-nav.next {
+        right: -16px;
+    }
+}
 
 
 

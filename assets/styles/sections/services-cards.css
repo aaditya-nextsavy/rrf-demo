@@ -699,12 +699,12 @@
     width: 100%;
     border-radius: 32px;
     overflow: hidden;
-    height: stretch;
+    aspect-ratio: 1104 / 583;
 }
 
 .service-general-image img {
     width: 100%;
-    height: stretch;
+    height: 100%;
     display: block;
     object-fit: cover;
 }
