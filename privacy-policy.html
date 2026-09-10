@@ -1042,24 +1042,31 @@
                                 <div class="footer-contact-form-field mb-3">
                                     <label>How Can We Help You?</label>
                                 </div>
-                                <div class="form-checkbox-group">
+                                <div class="contact-custom-dropdown">
 
+                                    <button type="button" class="contact-dropdown-trigger">
+                                        <span>Select an option</span>
+                                        <span class="contact-dropdown-arrow"></span>
+                                    </button>
 
+                                    <div class="contact-dropdown-menu">
 
-                                    <label class="form-checkbox-item">
-                                        <span>I would like to ask a question or get more information.</span>
-                                        <input type="radio" name="category" value="option-1">
-                                    </label>
+                                        <label class="form-checkbox-item">
+                                            <span>I would like to ask a question or get more information.</span>
+                                            <input type="radio" name="category" value="option-1">
+                                        </label>
 
-                                    <label class="form-checkbox-item">
-                                        <span>I would like to share feedback, or report an issue.</span>
-                                        <input type="radio" name="category" value="option-2">
-                                    </label>
+                                        <label class="form-checkbox-item">
+                                            <span>I would like to share feedback, or report an issue.</span>
+                                            <input type="radio" name="category" value="option-2">
+                                        </label>
 
-                                    <label class="form-checkbox-item">
-                                        <span>I would like to discuss a future business opportunity.</span>
-                                        <input type="radio" name="category" value="option-3">
-                                    </label>
+                                        <label class="form-checkbox-item">
+                                            <span>I would like to discuss a future business opportunity.</span>
+                                            <input type="radio" name="category" value="option-3">
+                                        </label>
+
+                                    </div>
 
                                 </div>
                                 
@@ -1363,12 +1370,12 @@
                                 <h4>Focus Areas</h4>
 
                                 <ul>
-                                    <li><a href="./good-health-well-being.html">Healthcare</a></li>
-                                    <li><a href="./quality-education.html">Education</a></li>
-                                    <li><a href="./gender-equality.html">Women Empowerment</a></li>
-                                    <li><a href="./climate-action.html">Environment</a></li>
-                                    <li><a href="./affordable-clean-energy.html">Renewable Energy</a></li>
-                                    <li><a href="./reduced-inequalities.html">Sports & Youth</a></li>
+                                    <li><a href="/services/healthcare.html">Healthcare</a></li>
+                                    <li><a href="/services/quality-education.html">Quality Education</a></li>
+                                    <li><a href="/services/gender-equality.html">Gender Equality</a></li>
+                                    <li><a href="/services/climate-action.html">Climate Action</a></li>
+                                    <li><a href="/services/affordable-clean-energy.html">Affordable & Clean Energy</a></li>
+                                    <li><a href="/services/reduced-inequalities.html">Reduced Inequalities</a></li>
                                 </ul>
                             </div>
 
@@ -1416,6 +1423,7 @@
 
     <script src="./assets/scripts/components/header.js"></script>
     <script src="./assets/scripts/components/contactForm.js"></script>
+    <script src="./assets/scripts/components/contactDropdown.js"></script>
     <button type="button" class="scroll-to-top" aria-label="Scroll to top" aria-hidden="true">
         <svg class="scroll-to-top__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path d="M12 5l7 7-1.41 1.41L13 8.83V19h-2V8.83l-4.59 4.58L5 12l7-7z" fill="currentColor" />

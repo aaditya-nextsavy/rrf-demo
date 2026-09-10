@@ -96,7 +96,7 @@
 }
 
 .our-blog-card:hover .our-blog-card-content {
-    opacity: 0.7;
+    opacity: 1;
     cursor: pointer;
 
 }
@@ -110,6 +110,8 @@
 
 .our-blog-card-content {
     padding-top: 32px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
 }
 
 .our-blog-card-date {
@@ -196,9 +198,6 @@
     right: 0;
 }
 
-.our-blog-card-link:hover {
-    opacity: 0.7;
-}
 
 
 @media (max-width: 1500px) {

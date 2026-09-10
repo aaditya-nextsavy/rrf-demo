@@ -56,8 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const filterValue = this.value;
 
-
-
+            setActiveGalleryFilter(filterValue);
 
             const delay = scrollToGallery();
 
@@ -118,6 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const filterValue = selected ? selected.value : "*";
 
+            setActiveGalleryFilter(filterValue);
+
             const delay = scrollToGallery();
 
             setTimeout(() => {
@@ -148,14 +149,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    GLightbox({
-        selector: ".glightbox",
-        loop: true,
-        touchNavigation: true,
-        keyboardNavigation: true,
-        closeButton: true,
-        openEffect: "zoom",
-        closeEffect: "zoom"
+    // GLightbox's built-in data-gallery/reload grouping keeps stale state
+    // once it has been opened once, so instead of relying on it, each click
+    // builds a fresh, throwaway instance scoped to only the items matching
+    // the currently active filter - that guarantees prev/next never crosses
+    // into a category the user isn't looking at.
+    const galleryItems = Array.from(grid.querySelectorAll(".gallery-grid-item.glightbox"));
+    let activeGalleryFilter = "*";
+
+    function setActiveGalleryFilter(filterValue) {
+        activeGalleryFilter = filterValue || "*";
+    }
+
+    function getVisibleGalleryItems() {
+        if (activeGalleryFilter === "*") {
+            return galleryItems;
+        }
+
+        const category = activeGalleryFilter.replace(".", "");
+        return galleryItems.filter((item) => item.classList.contains(category));
+    }
+
+    galleryItems.forEach((item) => {
+        item.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            const visibleItems = getVisibleGalleryItems();
+            const startIndex = visibleItems.indexOf(item);
+
+            if (startIndex === -1) {
+                return;
+            }
+
+            GLightbox({
+                elements: visibleItems.map((el) => ({
+                    href: el.getAttribute("href"),
+                    type: "image"
+                })),
+                startAt: startIndex,
+                loop: true,
+                touchNavigation: true,
+                keyboardNavigation: true,
+                closeButton: true,
+                openEffect: "zoom",
+                closeEffect: "zoom"
+            }).open();
+        });
     });
 
 
@@ -192,6 +231,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 option.classList.add("active");
 
                 dropdown.classList.remove("open");
+
+                setActiveGalleryFilter(filterValue);
 
                 const delay = scrollToGallery();
 
@@ -261,6 +302,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Close dropdown
             dropdown.classList.remove("open");
+
+            setActiveGalleryFilter(filterValue);
 
             // Scroll to gallery
             const delay = scrollToGallery();

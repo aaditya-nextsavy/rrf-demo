@@ -278,14 +278,38 @@
             getCaptchaErrorNode()?.remove();
         };
 
-        const hasRequiredValues = () => fieldConfigs.every((config) => {
-            const input = config.input;
-            return input ? input.value.trim().length > 0 : false;
-        });
+        const categoryDropdown = form.querySelector(".contact-custom-dropdown");
+        const categoryTrigger = categoryDropdown?.querySelector(".contact-dropdown-trigger");
+        const categoryInputs = Array.from(form.querySelectorAll('input[name="category"]'));
+        const getCategoryErrorNode = () => form.querySelector(`#category-error-${index}`);
+        const isCategoryValid = () => !categoryInputs.length || categoryInputs.some((input) => input.checked);
+        const showCategoryError = (message) => {
+            if (!categoryDropdown) {
+                return;
+            }
+
+            categoryTrigger?.classList.add("contact-dropdown-trigger--error");
+
+            let errorNode = getCategoryErrorNode();
+
+            if (!errorNode) {
+                errorNode = document.createElement("span");
+                errorNode.className = "footer-contact-form-error";
+                errorNode.id = `category-error-${index}`;
+                errorNode.setAttribute("aria-live", "polite");
+                categoryDropdown.insertAdjacentElement("afterend", errorNode);
+            }
+
+            errorNode.textContent = message;
+        };
+        const clearCategoryError = () => {
+            categoryTrigger?.classList.remove("contact-dropdown-trigger--error");
+            getCategoryErrorNode()?.remove();
+        };
 
         const syncButtonState = () => {
             if (submitButton) {
-                submitButton.disabled = state.isSubmitting || !(hasRequiredValues() && state.captchaToken && state.captchaReady);
+                submitButton.disabled = state.isSubmitting;
             }
         };
 
@@ -313,12 +337,15 @@
                 }
             });
 
+            if (isCategoryValid()) {
+                clearCategoryError();
+            } else {
+                showCategoryError("Please select an option.");
+                isValid = false;
+            }
+
             return isValid;
         };
-
-        if (submitButton) {
-            submitButton.disabled = true;
-        }
 
         try {
             await loadRecaptcha();
@@ -378,6 +405,14 @@
             });
         });
 
+        categoryInputs.forEach((input) => {
+            input.addEventListener("change", () => {
+                if (state.submittedOnce && isCategoryValid()) {
+                    clearCategoryError();
+                }
+            });
+        });
+
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
             state.submittedOnce = true;
@@ -389,7 +424,6 @@
                     showCaptchaError("Please complete the captcha challenge.");
                 }
 
-                showPopup("Please fix the highlighted fields and try again.", "error");
                 syncButtonState();
                 return;
             }
@@ -413,7 +447,7 @@
                 const payload = await response.json().catch(() => null);
 
                 if (!response.ok || !payload?.status) {
-                    throw new Error(payload?.message || "Unable to send your message right now.");
+                    throw new Error(payload?.message || "Something went wrong. Please try again later.");
                 }
 
                 form.reset();
@@ -434,6 +468,8 @@
                     }
                 });
 
+                clearCategoryError();
+
                 showPopup(payload?.message || "Your message has been sent successfully.", "success");
                 state.submittedOnce = false;
                 state.captchaToken = "";
@@ -445,7 +481,7 @@
                 clearCaptchaError();
             } catch (error) {
                 showPopup(
-                    error instanceof Error ? error.message : "Unable to send your message right now.",
+                    error instanceof Error ? error.message : "Something went wrong. Please try again later.",
                     "error"
                 );
             } finally {

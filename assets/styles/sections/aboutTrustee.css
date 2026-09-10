@@ -28,6 +28,10 @@
     max-width: 63%;
 }
 
+.about-trustee-description p+p {
+    margin-top: 20px;
+}
+
 .about-trustee-info {
     display: flex;
     width: max-content;

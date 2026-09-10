@@ -989,3 +989,98 @@
 .form-checkbox-item input[type="radio"]:checked::after {
     background: #017CC1;
 }
+
+
+.contact-custom-dropdown {
+    position: relative;
+    width: 100%;
+    margin-bottom: 22px;
+}
+
+.contact-dropdown-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    background: transparent;
+    border: 1px solid rgba(1, 123, 193, 0.5);
+    border-radius: 8px;
+    padding: 16px 20px;
+
+    color: var(--color-primary-blue);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: -0.5px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.contact-dropdown-trigger span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.contact-dropdown-arrow {
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+
+    border-right: 2px solid #017CC1;
+    border-bottom: 2px solid #017CC1;
+
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.contact-custom-dropdown.open .contact-dropdown-arrow {
+    transform: rotate(-135deg);
+}
+
+.contact-dropdown-trigger--error {
+    border-color: #d92d20;
+}
+
+.contact-custom-dropdown+.footer-contact-form-error {
+    margin-bottom: 18px;
+}
+
+.contact-dropdown-menu {
+    position: absolute;
+    z-index: 5;
+    top: calc(100% + 8px);
+    left: 0;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    background: #fff;
+    border: 1px solid rgba(1, 123, 193, 0.5);
+    border-radius: 12px;
+    padding: 4px 20px;
+    box-shadow: 10px 10px 20px 0px #0000000D;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+
+.contact-custom-dropdown.open .contact-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.contact-dropdown-menu .form-checkbox-item {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(1, 123, 193, 0.15);
+}
+
+.contact-dropdown-menu .form-checkbox-item:last-of-type {
+    border-bottom: none;
+}
