@@ -290,6 +290,17 @@ img {
         16px 0 0 #0d7ac4;
 }
 
+.section-title__description {
+    margin-top: 22px;
+    max-width: 560px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.1px;
+    color: var(--color-primary-blue);
+    opacity: 0.75;
+}
+
 
 .section-description p {
     font-weight: 400;
@@ -348,6 +359,12 @@ img {
 
     .section-title__heading {
         margin-bottom: 20px;
+    }
+
+    .section-title__description {
+        margin-top: 16px;
+        font-size: 14px;
+        line-height: 20px;
     }
 
 }

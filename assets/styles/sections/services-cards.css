@@ -700,6 +700,8 @@
     border-radius: 32px;
     overflow: hidden;
     aspect-ratio: 1104 / 583;
+    position: sticky;
+    top: 130px;
 }
 
 .service-general-image img {
@@ -718,6 +720,10 @@
     .service-data-description {
         width: 100%;
         max-width: 100%;
+    }
+
+    .service-general-image {
+        position: static;
     }
 }
 
