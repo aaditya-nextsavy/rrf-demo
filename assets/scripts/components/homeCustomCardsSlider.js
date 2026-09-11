@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const resetStyles = (controller) => {
         controller.sliderWrapper.style.height = "";
+        controller.viewport.style.height = "";
 
         controller.cards.forEach((card) => {
             card.style.transform = "";
@@ -104,12 +105,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
             controller.scrollDistance = window.innerHeight * stageCount * 0.55;
 
+            // On mobile the sticky viewport doesn't need to be a full screen
+            // tall - it only needs to comfortably fit one card. A full-height
+            // viewport leaves a large empty gap below the last settled card
+            // (nothing left to stack on top of it to cover that space), so
+            // size the pinned area to the card itself instead of the screen.
+            const pinHeight = isDesktopSection(controller)
+                ? window.innerHeight
+                : Math.min(window.innerHeight, controller.cardHeight + 160);
+
+            if (!isDesktopSection(controller)) {
+                controller.viewport.style.height = `${pinHeight}px`;
+            }
+
             controller.startY =
                 window.scrollY +
                 controller.sliderWrapper.getBoundingClientRect().top;
 
             controller.sliderWrapper.style.height =
-                `${window.innerHeight + controller.scrollDistance}px`;
+                `${pinHeight + controller.scrollDistance}px`;
 
             controller.cards.forEach((card, index) => {
                 card.style.zIndex = String(1000 + index);
@@ -172,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // const startY = (controller.cardHeight + 70) * (index + 1);
             // const startY = (controller.cardHeight * 0.35) * (index + 1);
-            const startY = (controller.cardHeight + 20) * (index + 1);
+            const startY = (controller.cardHeight + 20) * index;
 
             const y = lerp(startY, 0, eased);
 

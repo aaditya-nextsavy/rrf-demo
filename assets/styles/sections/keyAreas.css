@@ -343,6 +343,7 @@
     .key-areas-slider-stack-wrapper .key-areas-info-wrapper {
         width: 100%;
         padding-right: 0;
+        margin-bottom: 32px;
     }
 
     .key-areas-slider-stack-wrapper .key-areas-section-info {
@@ -378,7 +379,7 @@
 
     .key-areas-slider-stack-wrapper .customCard {
         position: absolute;
-        top: 30%;
+        top: 50%;
         left: 50%;
         transform-origin: center center;
         will-change: transform, opacity;

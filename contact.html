@@ -882,9 +882,9 @@
     <section class="contact-page-form-info">
         <div class="footer-contact-us-wrapper">
             <div class="container">
-                <div class="footer-contact-us">
+                <div class="footer-contact-us mt-[50px] sm:mt-[60px] xl:mt-[80px]">
 
-                    <div class="footer-contact-us-form-info">
+                    <div class="footer-contact-us-form-info ">
 
 
 
@@ -892,7 +892,7 @@
                         <!-- form -->
                         <div class="footer-contact-form-wrapper">
 
-                            <div class="footer-contact-us-title mb-6 lg:mb-10">
+                            <!-- <div class="footer-contact-us-title mb-6 lg:mb-10">
                                 <div class="section-title">
                                     <h2 class="section-title__heading">
                                         Send us a Message
@@ -903,7 +903,7 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> -->
 
                             <form class="footer-contact-form">
 
@@ -944,18 +944,23 @@
                                     <div class="contact-dropdown-menu">
 
                                         <label class="form-checkbox-item">
-                                            <span>I would like to ask a question or get more information.</span>
+                                            <span>Ask a question or get more information.</span>
                                             <input type="radio" name="category" value="option-1">
                                         </label>
 
                                         <label class="form-checkbox-item">
-                                            <span>I would like to share feedback, or report an issue.</span>
+                                            <span>Share feedback, or report an issue.</span>
                                             <input type="radio" name="category" value="option-2">
                                         </label>
 
                                         <label class="form-checkbox-item">
-                                            <span>I would like to discuss a future business opportunity.</span>
+                                            <span>Discuss a future business opportunity.</span>
                                             <input type="radio" name="category" value="option-3">
+                                        </label>
+
+                                        <label class="form-checkbox-item">
+                                            <span>Others.</span>
+                                            <input type="radio" name="category" value="option-4">
                                         </label>
 
                                     </div>
@@ -984,12 +989,12 @@
                         </div>
 
                         <!-- info -->
-                        <div class="footer-contact-info-wrapper">
+                        <div class="footer-contact-info-wrapper flex flex-col">
 
                             <div class="footer-contact-us-title mb-6 lg:mb-10">
                                 <div class="section-title">
                                     <h2 class="section-title__heading">
-                                        Reach out
+                                        We’d Like to Hear From You
                                     </h2>
 
                                     <div class="section-title__divider">
@@ -999,188 +1004,197 @@
                                 </div>
                             </div>
 
-                            <div class="footer-contact-info-item">
+                            <div>
+                                <div class="footer-contact-info-item">
 
-                                <div class="footer-contact-info-icon">
+                                    <div class="footer-contact-info-icon">
 
-                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="60" height="60" rx="30" fill="#017CC1" />
-                                        <path
-                                            d="M38.7122 34.7376V37.1377C38.7131 37.3605 38.6675 37.5811 38.5782 37.7852C38.489 37.9894 38.358 38.1726 38.1939 38.3233C38.0297 38.4739 37.8358 38.5886 37.6248 38.66C37.4137 38.7314 37.19 38.7579 36.9681 38.7378C34.5062 38.4703 32.1414 37.6291 30.0637 36.2817C28.1307 35.0533 26.4918 33.4144 25.2634 31.4814C23.9113 29.3942 23.0699 27.0179 22.8073 24.545C22.7873 24.3237 22.8136 24.1007 22.8845 23.8902C22.9554 23.6797 23.0693 23.4863 23.2191 23.3222C23.3689 23.1581 23.5512 23.027 23.7544 22.9373C23.9576 22.8475 24.1772 22.8011 24.3994 22.8009H26.7995C27.1878 22.797 27.5642 22.9345 27.8586 23.1877C28.153 23.4409 28.3453 23.7925 28.3996 24.1769C28.5009 24.945 28.6888 25.6992 28.9596 26.4251C29.0673 26.7114 29.0906 27.0226 29.0268 27.3218C28.963 27.621 28.8147 27.8957 28.5996 28.1132L27.5836 29.1292C28.7225 31.1322 30.3809 32.7906 32.3838 33.9295L33.3999 32.9135C33.6174 32.6984 33.8921 32.5501 34.1913 32.4863C34.4904 32.4225 34.8017 32.4458 35.088 32.5534C35.8139 32.8243 36.568 33.0122 37.3361 33.1135C37.7248 33.1683 38.0797 33.3641 38.3334 33.6635C38.5872 33.963 38.722 34.3452 38.7122 34.7376Z"
-                                            stroke="white" stroke-width="1.4172" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
+                                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="60" height="60" rx="30" fill="#017CC1" />
+                                            <path
+                                                d="M38.7122 34.7376V37.1377C38.7131 37.3605 38.6675 37.5811 38.5782 37.7852C38.489 37.9894 38.358 38.1726 38.1939 38.3233C38.0297 38.4739 37.8358 38.5886 37.6248 38.66C37.4137 38.7314 37.19 38.7579 36.9681 38.7378C34.5062 38.4703 32.1414 37.6291 30.0637 36.2817C28.1307 35.0533 26.4918 33.4144 25.2634 31.4814C23.9113 29.3942 23.0699 27.0179 22.8073 24.545C22.7873 24.3237 22.8136 24.1007 22.8845 23.8902C22.9554 23.6797 23.0693 23.4863 23.2191 23.3222C23.3689 23.1581 23.5512 23.027 23.7544 22.9373C23.9576 22.8475 24.1772 22.8011 24.3994 22.8009H26.7995C27.1878 22.797 27.5642 22.9345 27.8586 23.1877C28.153 23.4409 28.3453 23.7925 28.3996 24.1769C28.5009 24.945 28.6888 25.6992 28.9596 26.4251C29.0673 26.7114 29.0906 27.0226 29.0268 27.3218C28.963 27.621 28.8147 27.8957 28.5996 28.1132L27.5836 29.1292C28.7225 31.1322 30.3809 32.7906 32.3838 33.9295L33.3999 32.9135C33.6174 32.6984 33.8921 32.5501 34.1913 32.4863C34.4904 32.4225 34.8017 32.4458 35.088 32.5534C35.8139 32.8243 36.568 33.0122 37.3361 33.1135C37.7248 33.1683 38.0797 33.3641 38.3334 33.6635C38.5872 33.963 38.722 34.3452 38.7122 34.7376Z"
+                                                stroke="white" stroke-width="1.4172" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
 
+
+                                    </div>
+                                    <div class="footer-contact-info-content">
+                                        <span>Contact Number</span>
+                                        <a href="tel:+917927561915">
+                                            +91-79275619 15/16/17/18 / 7984430502
+                                            <span class="hover-arrow">
+                                                <img width="6" height="10" src="./assets/media/icons/hover-arrow.svg"
+                                                    alt="arrow" />
+                                            </span>
+                                        </a>
+                                    </div>
 
                                 </div>
-                                <div class="footer-contact-info-content">
-                                    <span>Contact Number</span>
-                                    <a href="tel:+917927561915">
-                                        +91-79275619 15/16/17/18 / 7984430502
-                                        <span class="hover-arrow">
-                                            <img width="6" height="10" src="./assets/media/icons/hover-arrow.svg"
-                                                alt="arrow" />
-                                        </span>
-                                    </a>
+
+                                <div class="footer-contact-info-divider"></div>
+
+                                <div class="footer-contact-info-item">
+
+                                    <div class="footer-contact-info-icon">
+
+                                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="60" height="60" rx="30" fill="#017CC1" />
+                                            <path
+                                                d="M21.9996 22H37.9996C39.0996 22 39.9996 22.9 39.9996 24V36C39.9996 37.1 39.0996 38 37.9996 38H21.9996C20.8996 38 19.9996 37.1 19.9996 36V24C19.9996 22.9 20.8996 22 21.9996 22Z"
+                                                stroke="white" stroke-width="1.23429" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M39.9998 24L29.9998 31L19.9998 24" stroke="white"
+                                                stroke-width="1.23429" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+
+                                    </div>
+
+                                    <div class="footer-contact-info-content">
+                                        <span>Email</span>
+
+                                        <a href="mailto:info@raajratnafoundation.com" target="_blank"
+                                            rel="noopener noreferrer">
+                                            info@raajratnafoundation.com
+                                            <span class="hover-arrow">
+                                                <img width="6" height="10" src="./assets/media/icons/hover-arrow.svg"
+                                                    alt="arrow" />
+                                            </span>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                                <div class="footer-contact-info-divider"></div>
+
+                                <div class="footer-contact-info-item footer-contact-info-item--office">
+
+                                    <div class="footer-contact-info-icon">
+
+                                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="60" height="60" rx="30" fill="#017CC1" />
+                                            <path
+                                                d="M38.8221 27.539C38.8221 34.3353 30.0839 40.1608 30.0839 40.1608C30.0839 40.1608 21.3457 34.3353 21.3457 27.539C21.3457 25.2215 22.2663 22.9989 23.9051 21.3601C25.5438 19.7214 27.7664 18.8008 30.0839 18.8008C32.4014 18.8008 34.624 19.7214 36.2627 21.3601C37.9014 22.9989 38.8221 25.2215 38.8221 27.539Z"
+                                                stroke="white" stroke-width="1.09124" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M30.0983 30.4544C31.7069 30.4544 33.011 29.1503 33.011 27.5416C33.011 25.933 31.7069 24.6289 30.0983 24.6289C28.4896 24.6289 27.1855 25.933 27.1855 27.5416C27.1855 29.1503 28.4896 30.4544 30.0983 30.4544Z"
+                                                stroke="white" stroke-width="1.09124" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M39.076 27.539C39.076 34.3353 30.3378 40.1608 30.3378 40.1608C30.3378 40.1608 21.5996 34.3353 21.5996 27.539C21.5996 25.2215 22.5202 22.9989 24.159 21.3601C25.7977 19.7214 28.0203 18.8008 30.3378 18.8008C32.6553 18.8008 34.8779 19.7214 36.5166 21.3601C38.1553 22.9989 39.076 25.2215 39.076 27.539Z"
+                                                stroke="white" stroke-width="1.09124" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M30.3522 30.4544C31.9608 30.4544 33.2649 29.1503 33.2649 27.5416C33.2649 25.933 31.9608 24.6289 30.3522 24.6289C28.7435 24.6289 27.4395 25.933 27.4395 27.5416C27.4395 29.1503 28.7435 30.4544 30.3522 30.4544Z"
+                                                stroke="white" stroke-width="1.09124" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+
+
+                                    </div>
+
+                                    <div class="footer-contact-info-content">
+                                        <span>Office</span>
+
+                                        <a href="https://www.google.com/maps/search/1402,+14th+Floor,+Phoenix,+Near+Commerce+Six+Roads+Metro+Station,+Navrangpura,+Ahmedabad+-380009,+Gujarat,+India"
+                                            target="_blank" rel="noopener noreferrer">
+                                            1402, 14th Floor, Phoenix, Near Commerce Six Roads Metro
+                                            Station, Navrangpura, Ahmedabad -380009, Gujarat, India
+                                            <span class="hover-arrow">
+                                                <img width="6" height="10" src="./assets/media/icons/hover-arrow.svg"
+                                                    alt="arrow" />
+                                            </span>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                                <div class="footer-contact-info-divider"></div>
+
+
+                                <div class="footer-contact-info-item contact-page-socials-wrapper ">
+
+                                    <div class="footer-contact-info-icon ">
+
+                                        <a class="contact-page-socials" href="https://www.facebook.com/"
+                                            target="_blank">
+
+                                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="0.990132" y="0.990132" width="61.3882" height="61.3882"
+                                                    rx="30.6941" stroke="#017CC1" stroke-width="1.98026" />
+                                                <path
+                                                    d="M31.6867 17.3822C23.7879 17.3822 17.3848 23.7854 17.3848 31.6841C17.3848 38.8226 22.6148 44.7393 29.452 45.8122V35.8182H25.8206V31.6841H29.452V28.5332C29.452 24.9488 31.5872 22.9689 34.854 22.9689C36.4188 22.9689 38.0555 23.2482 38.0555 23.2482V26.7678H36.252C34.4754 26.7678 33.9214 27.8703 33.9214 29.0014V31.6841H37.8879L37.2539 35.8182H33.9214V45.8122C40.7585 44.7393 45.9886 38.8226 45.9886 31.6841C45.9886 23.7854 39.5854 17.3822 31.6867 17.3822Z"
+                                                    fill="#017CC1" />
+                                            </svg>
+                                        </a>
+                                    </div>
+
+
+
+                                    <div class="footer-contact-info-icon">
+
+                                        <a class="contact-page-socials" href="https://www.x.com/" target="_blank">
+
+                                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="0.990132" y="0.990132" width="61.3882" height="61.3882"
+                                                    rx="30.6941" stroke="#017CC1" stroke-width="1.98026" />
+                                                <path
+                                                    d="M39.5792 19.6729H43.7899L34.5908 29.8505L45.4128 43.7H36.9393L30.3025 35.3004L22.7086 43.7H18.4954L28.3347 32.8139L17.9531 19.6729H26.6418L32.6408 27.3505L39.5792 19.6729ZM38.1014 41.2604H40.4346L25.374 21.9844H22.8702L38.1014 41.2604Z"
+                                                    fill="#017CC1" />
+                                            </svg>
+                                        </a>
+
+
+                                    </div>
+
+
+                                    <div class="footer-contact-info-icon">
+
+
+                                        <a class="contact-page-socials"
+                                            href="https://www.linkedin.com/company/raajratna-foundation/"
+                                            target="_blank">
+                                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="0.990132" y="0.990132" width="61.3882" height="61.3882"
+                                                    rx="30.6941" stroke="#017CC1" stroke-width="1.98026" />
+                                                <path
+                                                    d="M24.4493 21.6742C24.4488 22.8388 23.7423 23.8868 22.6628 24.324C21.5834 24.7613 20.3467 24.5004 19.5358 23.6645C18.7249 22.8285 18.5019 21.5844 18.9717 20.5188C19.4417 19.4532 20.5107 18.7789 21.6748 18.8138C23.2209 18.8602 24.45 20.1273 24.4493 21.6742ZM24.5352 26.6512H18.8144V44.5572H24.5352V26.6512ZM33.574 26.6512H27.8818V44.5572H33.5168V35.1608C33.5168 29.9263 40.3388 29.4401 40.3388 35.1608V44.5572H45.988V33.2158C45.988 24.3915 35.8909 24.7205 33.5168 29.0539L33.574 26.6512Z"
+                                                    fill="#017CC1" />
+                                            </svg>
+                                        </a>
+
+                                    </div>
+
+                                    <div class="footer-contact-info-icon ">
+
+                                        <a class="contact-page-socials" href="https://www.instagram.com/"
+                                            target="_blank">
+                                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="0.990132" y="0.990132" width="61.3882" height="61.3882"
+                                                    rx="30.6941" stroke="#017CC1" stroke-width="1.98026" />
+                                                <path
+                                                    d="M33.1556 17.3822C34.7652 17.3849 35.5808 17.3934 36.2856 17.4144L36.5632 17.4234C36.8839 17.4348 37.2002 17.4491 37.5817 17.467C39.1035 17.5373 40.1417 17.7781 41.0534 18.1321C41.9961 18.4956 42.7923 18.9866 43.5872 19.7815C44.3809 20.5765 44.872 21.375 45.2367 22.3154C45.5894 23.2259 45.8303 24.2652 45.9018 25.7871C45.9188 26.1685 45.9325 26.4849 45.9438 26.8056L45.9528 27.0832C45.9737 27.7879 45.9833 28.6037 45.9863 30.2133L45.9875 31.2796C45.9876 31.4099 45.9876 31.5443 45.9876 31.6831L45.9875 32.0865L45.9866 33.153C45.9839 34.7625 45.9754 35.5783 45.9544 36.283L45.9453 36.5606C45.934 36.8814 45.9197 37.1977 45.9018 37.579C45.8314 39.101 45.5894 40.1391 45.2367 41.0508C44.8732 41.9936 44.3809 42.7898 43.5872 43.5847C42.7923 44.3784 41.9925 44.8694 41.0534 45.2341C40.1417 45.5869 39.1035 45.8276 37.5817 45.8991C37.2002 45.9162 36.8839 45.93 36.5632 45.9412L36.2856 45.9502C35.5808 45.9712 34.7652 45.9807 33.1556 45.9838L32.0892 45.985C31.9589 45.985 31.8244 45.985 31.6857 45.985H31.2822L30.2157 45.984C28.6062 45.9814 27.7905 45.9728 27.0857 45.9518L26.8082 45.9428C26.4874 45.9313 26.1711 45.917 25.7897 45.8991C24.2677 45.8289 23.2309 45.5869 22.3179 45.2341C21.3764 44.8707 20.579 44.3784 19.7841 43.5847C18.9892 42.7898 18.4993 41.99 18.1346 41.0508C17.7806 40.1391 17.5411 39.101 17.4696 37.579C17.4526 37.1977 17.4387 36.8814 17.4275 36.5606L17.4185 36.283C17.3976 35.5783 17.388 34.7625 17.385 33.153L17.3848 30.2133C17.3874 28.6037 17.3959 27.7879 17.4169 27.0832L17.426 26.8056C17.4374 26.4849 17.4517 26.1685 17.4696 25.7871C17.5399 24.264 17.7806 23.2271 18.1346 22.3154C18.4981 21.3738 18.9892 20.5765 19.7841 19.7815C20.579 18.9866 21.3776 18.4967 22.3179 18.1321C23.2297 17.7781 24.2666 17.5385 25.7897 17.467C26.1711 17.45 26.4874 17.4362 26.8082 17.425L27.0857 17.416C27.7905 17.395 28.6062 17.3855 30.2157 17.3824L33.1556 17.3822ZM31.6857 24.5322C27.7342 24.5322 24.5347 27.7351 24.5347 31.6831C24.5347 35.6345 27.7377 38.834 31.6857 38.834C35.6372 38.834 38.8366 35.6311 38.8366 31.6831C38.8366 27.7316 35.6336 24.5322 31.6857 24.5322ZM31.6857 27.3925C34.0554 27.3925 35.9763 29.3128 35.9763 31.6831C35.9763 34.0527 34.056 35.9736 31.6857 35.9736C29.316 35.9736 27.3951 34.0535 27.3951 31.6831C27.3951 29.3134 29.3153 27.3925 31.6857 27.3925ZM39.1942 22.3869C38.2084 22.3869 37.4065 23.1876 37.4065 24.1734C37.4065 25.1591 38.2072 25.9612 39.1942 25.9612C40.1799 25.9612 40.9819 25.1604 40.9819 24.1734C40.9819 23.1876 40.1786 22.3856 39.1942 22.3869Z"
+                                                    fill="#017CC1" />
+                                            </svg>
+                                        </a>
+
+                                    </div>
+
                                 </div>
 
                             </div>
 
-                            <div class="footer-contact-info-divider"></div>
-
-                            <div class="footer-contact-info-item">
-
-                                <div class="footer-contact-info-icon">
-
-                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="60" height="60" rx="30" fill="#017CC1" />
-                                        <path
-                                            d="M21.9996 22H37.9996C39.0996 22 39.9996 22.9 39.9996 24V36C39.9996 37.1 39.0996 38 37.9996 38H21.9996C20.8996 38 19.9996 37.1 19.9996 36V24C19.9996 22.9 20.8996 22 21.9996 22Z"
-                                            stroke="white" stroke-width="1.23429" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M39.9998 24L29.9998 31L19.9998 24" stroke="white"
-                                            stroke-width="1.23429" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
 
 
-                                </div>
-
-                                <div class="footer-contact-info-content">
-                                    <span>Email</span>
-
-                                    <a href="mailto:info@raajratnafoundation.com" target="_blank"
-                                        rel="noopener noreferrer">
-                                        info@raajratnafoundation.com
-                                        <span class="hover-arrow">
-                                            <img width="6" height="10" src="./assets/media/icons/hover-arrow.svg"
-                                                alt="arrow" />
-                                        </span>
-                                    </a>
-                                </div>
-
-                            </div>
-
-                            <div class="footer-contact-info-divider"></div>
-
-                            <div class="footer-contact-info-item footer-contact-info-item--office">
-
-                                <div class="footer-contact-info-icon">
-
-                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="60" height="60" rx="30" fill="#017CC1" />
-                                        <path
-                                            d="M38.8221 27.539C38.8221 34.3353 30.0839 40.1608 30.0839 40.1608C30.0839 40.1608 21.3457 34.3353 21.3457 27.539C21.3457 25.2215 22.2663 22.9989 23.9051 21.3601C25.5438 19.7214 27.7664 18.8008 30.0839 18.8008C32.4014 18.8008 34.624 19.7214 36.2627 21.3601C37.9014 22.9989 38.8221 25.2215 38.8221 27.539Z"
-                                            stroke="white" stroke-width="1.09124" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path
-                                            d="M30.0983 30.4544C31.7069 30.4544 33.011 29.1503 33.011 27.5416C33.011 25.933 31.7069 24.6289 30.0983 24.6289C28.4896 24.6289 27.1855 25.933 27.1855 27.5416C27.1855 29.1503 28.4896 30.4544 30.0983 30.4544Z"
-                                            stroke="white" stroke-width="1.09124" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path
-                                            d="M39.076 27.539C39.076 34.3353 30.3378 40.1608 30.3378 40.1608C30.3378 40.1608 21.5996 34.3353 21.5996 27.539C21.5996 25.2215 22.5202 22.9989 24.159 21.3601C25.7977 19.7214 28.0203 18.8008 30.3378 18.8008C32.6553 18.8008 34.8779 19.7214 36.5166 21.3601C38.1553 22.9989 39.076 25.2215 39.076 27.539Z"
-                                            stroke="white" stroke-width="1.09124" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path
-                                            d="M30.3522 30.4544C31.9608 30.4544 33.2649 29.1503 33.2649 27.5416C33.2649 25.933 31.9608 24.6289 30.3522 24.6289C28.7435 24.6289 27.4395 25.933 27.4395 27.5416C27.4395 29.1503 28.7435 30.4544 30.3522 30.4544Z"
-                                            stroke="white" stroke-width="1.09124" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-
-
-                                </div>
-
-                                <div class="footer-contact-info-content">
-                                    <span>Office</span>
-
-                                    <a href="https://www.google.com/maps/search/1402,+14th+Floor,+Phoenix,+Near+Commerce+Six+Roads+Metro+Station,+Navrangpura,+Ahmedabad+-380009,+Gujarat,+India"
-                                        target="_blank" rel="noopener noreferrer">
-                                        1402, 14th Floor, Phoenix, Near Commerce Six Roads Metro
-                                        Station, Navrangpura, Ahmedabad -380009, Gujarat, India
-                                        <span class="hover-arrow">
-                                            <img width="6" height="10" src="./assets/media/icons/hover-arrow.svg"
-                                                alt="arrow" />
-                                        </span>
-                                    </a>
-                                </div>
-
-                            </div>
-
-                            <div class="footer-contact-info-divider"></div>
-
-
-                            <div class="footer-contact-info-item contact-page-socials-wrapper ">
-
-                                <div class="footer-contact-info-icon ">
-
-                                    <a class="contact-page-socials" href="https://www.facebook.com/" target="_blank">
-
-                                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="0.990132" y="0.990132" width="61.3882" height="61.3882"
-                                                rx="30.6941" stroke="#017CC1" stroke-width="1.98026" />
-                                            <path
-                                                d="M31.6867 17.3822C23.7879 17.3822 17.3848 23.7854 17.3848 31.6841C17.3848 38.8226 22.6148 44.7393 29.452 45.8122V35.8182H25.8206V31.6841H29.452V28.5332C29.452 24.9488 31.5872 22.9689 34.854 22.9689C36.4188 22.9689 38.0555 23.2482 38.0555 23.2482V26.7678H36.252C34.4754 26.7678 33.9214 27.8703 33.9214 29.0014V31.6841H37.8879L37.2539 35.8182H33.9214V45.8122C40.7585 44.7393 45.9886 38.8226 45.9886 31.6841C45.9886 23.7854 39.5854 17.3822 31.6867 17.3822Z"
-                                                fill="#017CC1" />
-                                        </svg>
-                                    </a>
-                                </div>
-
-
-
-                                <div class="footer-contact-info-icon">
-
-                                    <a class="contact-page-socials" href="https://www.x.com/" target="_blank">
-
-                                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="0.990132" y="0.990132" width="61.3882" height="61.3882"
-                                                rx="30.6941" stroke="#017CC1" stroke-width="1.98026" />
-                                            <path
-                                                d="M39.5792 19.6729H43.7899L34.5908 29.8505L45.4128 43.7H36.9393L30.3025 35.3004L22.7086 43.7H18.4954L28.3347 32.8139L17.9531 19.6729H26.6418L32.6408 27.3505L39.5792 19.6729ZM38.1014 41.2604H40.4346L25.374 21.9844H22.8702L38.1014 41.2604Z"
-                                                fill="#017CC1" />
-                                        </svg>
-                                    </a>
-
-
-                                </div>
-
-
-                                <div class="footer-contact-info-icon">
-
-
-                                    <a class="contact-page-socials"
-                                        href="https://www.linkedin.com/company/raajratna-foundation/" target="_blank">
-                                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="0.990132" y="0.990132" width="61.3882" height="61.3882"
-                                                rx="30.6941" stroke="#017CC1" stroke-width="1.98026" />
-                                            <path
-                                                d="M24.4493 21.6742C24.4488 22.8388 23.7423 23.8868 22.6628 24.324C21.5834 24.7613 20.3467 24.5004 19.5358 23.6645C18.7249 22.8285 18.5019 21.5844 18.9717 20.5188C19.4417 19.4532 20.5107 18.7789 21.6748 18.8138C23.2209 18.8602 24.45 20.1273 24.4493 21.6742ZM24.5352 26.6512H18.8144V44.5572H24.5352V26.6512ZM33.574 26.6512H27.8818V44.5572H33.5168V35.1608C33.5168 29.9263 40.3388 29.4401 40.3388 35.1608V44.5572H45.988V33.2158C45.988 24.3915 35.8909 24.7205 33.5168 29.0539L33.574 26.6512Z"
-                                                fill="#017CC1" />
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-                                <div class="footer-contact-info-icon ">
-
-                                    <a class="contact-page-socials" href="https://www.instagram.com/" target="_blank">
-                                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="0.990132" y="0.990132" width="61.3882" height="61.3882"
-                                                rx="30.6941" stroke="#017CC1" stroke-width="1.98026" />
-                                            <path
-                                                d="M33.1556 17.3822C34.7652 17.3849 35.5808 17.3934 36.2856 17.4144L36.5632 17.4234C36.8839 17.4348 37.2002 17.4491 37.5817 17.467C39.1035 17.5373 40.1417 17.7781 41.0534 18.1321C41.9961 18.4956 42.7923 18.9866 43.5872 19.7815C44.3809 20.5765 44.872 21.375 45.2367 22.3154C45.5894 23.2259 45.8303 24.2652 45.9018 25.7871C45.9188 26.1685 45.9325 26.4849 45.9438 26.8056L45.9528 27.0832C45.9737 27.7879 45.9833 28.6037 45.9863 30.2133L45.9875 31.2796C45.9876 31.4099 45.9876 31.5443 45.9876 31.6831L45.9875 32.0865L45.9866 33.153C45.9839 34.7625 45.9754 35.5783 45.9544 36.283L45.9453 36.5606C45.934 36.8814 45.9197 37.1977 45.9018 37.579C45.8314 39.101 45.5894 40.1391 45.2367 41.0508C44.8732 41.9936 44.3809 42.7898 43.5872 43.5847C42.7923 44.3784 41.9925 44.8694 41.0534 45.2341C40.1417 45.5869 39.1035 45.8276 37.5817 45.8991C37.2002 45.9162 36.8839 45.93 36.5632 45.9412L36.2856 45.9502C35.5808 45.9712 34.7652 45.9807 33.1556 45.9838L32.0892 45.985C31.9589 45.985 31.8244 45.985 31.6857 45.985H31.2822L30.2157 45.984C28.6062 45.9814 27.7905 45.9728 27.0857 45.9518L26.8082 45.9428C26.4874 45.9313 26.1711 45.917 25.7897 45.8991C24.2677 45.8289 23.2309 45.5869 22.3179 45.2341C21.3764 44.8707 20.579 44.3784 19.7841 43.5847C18.9892 42.7898 18.4993 41.99 18.1346 41.0508C17.7806 40.1391 17.5411 39.101 17.4696 37.579C17.4526 37.1977 17.4387 36.8814 17.4275 36.5606L17.4185 36.283C17.3976 35.5783 17.388 34.7625 17.385 33.153L17.3848 30.2133C17.3874 28.6037 17.3959 27.7879 17.4169 27.0832L17.426 26.8056C17.4374 26.4849 17.4517 26.1685 17.4696 25.7871C17.5399 24.264 17.7806 23.2271 18.1346 22.3154C18.4981 21.3738 18.9892 20.5765 19.7841 19.7815C20.579 18.9866 21.3776 18.4967 22.3179 18.1321C23.2297 17.7781 24.2666 17.5385 25.7897 17.467C26.1711 17.45 26.4874 17.4362 26.8082 17.425L27.0857 17.416C27.7905 17.395 28.6062 17.3855 30.2157 17.3824L33.1556 17.3822ZM31.6857 24.5322C27.7342 24.5322 24.5347 27.7351 24.5347 31.6831C24.5347 35.6345 27.7377 38.834 31.6857 38.834C35.6372 38.834 38.8366 35.6311 38.8366 31.6831C38.8366 27.7316 35.6336 24.5322 31.6857 24.5322ZM31.6857 27.3925C34.0554 27.3925 35.9763 29.3128 35.9763 31.6831C35.9763 34.0527 34.056 35.9736 31.6857 35.9736C29.316 35.9736 27.3951 34.0535 27.3951 31.6831C27.3951 29.3134 29.3153 27.3925 31.6857 27.3925ZM39.1942 22.3869C38.2084 22.3869 37.4065 23.1876 37.4065 24.1734C37.4065 25.1591 38.2072 25.9612 39.1942 25.9612C40.1799 25.9612 40.9819 25.1604 40.9819 24.1734C40.9819 23.1876 40.1786 22.3856 39.1942 22.3869Z"
-                                                fill="#017CC1" />
-                                        </svg>
-                                    </a>
-
-                                </div>
-
-                            </div>
 
 
 
@@ -1636,7 +1650,8 @@
                                     <li><a href="/services/quality-education.html">Quality Education</a></li>
                                     <li><a href="/services/gender-equality.html">Gender Equality</a></li>
                                     <li><a href="/services/climate-action.html">Climate Action</a></li>
-                                    <li><a href="/services/affordable-clean-energy.html">Affordable & Clean Energy</a></li>
+                                    <li><a href="/services/affordable-clean-energy.html">Affordable & Clean Energy</a>
+                                    </li>
                                     <li><a href="/services/reduced-inequalities.html">Reduced Inequalities</a></li>
                                 </ul>
                             </div>

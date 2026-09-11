@@ -44,6 +44,8 @@
                 triggerLabel.textContent = optionLabel.textContent;
             }
 
+            trigger.classList.add("contact-dropdown-trigger--selected");
+
             close();
         });
 
@@ -63,12 +65,14 @@
             if (triggerLabel) {
                 triggerLabel.textContent = placeholder;
             }
+            trigger.classList.remove("contact-dropdown-trigger--selected");
         });
 
         dropdown.closest("form")?.addEventListener("reset", () => {
             if (triggerLabel) {
                 triggerLabel.textContent = placeholder;
             }
+            trigger.classList.remove("contact-dropdown-trigger--selected");
         });
     });
 })();
