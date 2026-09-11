@@ -270,7 +270,8 @@
     z-index: 3;
     display: flex;
     align-items: end;
-    top: -325px;
+    /* top: -325px; */
+    top: -105px;
 }
 
 .hero-hands-animation-image {
@@ -430,7 +431,11 @@
     } */
 }
 
-@media (max-width: 990px) {}
+@media (max-width: 1290px) {
+    .hero-hands-animation-image-wrapper {
+        top: -80px;
+    }
+}
 
 @media (max-width: 990px) {}
 
@@ -463,7 +468,7 @@
 
     .hero-hands-animation-image-wrapper {
         align-items: center;
-        top: -125px;
+        top: -30px;
     }
 
     .hero-hands-animation-image svg {
@@ -490,14 +495,14 @@
 @media (max-width: 500px) {
     .hero-hands-animation-image-wrapper {
         align-items: center;
-        top: -155px;
+        /* top: -5px; */
     }
 }
 
 @media (max-width: 450px) {
     .hero-hands-animation-image-wrapper {
         align-items: center;
-        top: -205px;
+        top: -55px;
     }
 }
 
@@ -505,14 +510,14 @@
 @media (max-width: 400px) {
     .hero-hands-animation-image-wrapper {
         align-items: center;
-        top: -210px;
+        /* top: -210px; */
     }
 }
 
 @media (max-width: 350px) {
     .hero-hands-animation-image-wrapper {
         align-items: center;
-        top: -265px;
+        top: -65px;
     }
 }
 

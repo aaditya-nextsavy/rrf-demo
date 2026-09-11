@@ -637,6 +637,19 @@
 
 }
 
+.rf-footer-links-column--contact ul li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rf-footer-links-column--contact ul li a svg {
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    color: var(--color-white);
+}
+
 .rf-footer-links-column ul li a::after {
     content: ' ';
     width: 0%;
