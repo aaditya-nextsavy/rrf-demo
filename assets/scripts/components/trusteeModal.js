@@ -10,6 +10,49 @@
     const roleEl = modal.querySelector(".trustee-modal-role");
     const bodyEl = modal.querySelector(".trustee-modal-description");
 
+    // Cache each preview paragraph's full, untruncated text so the modal
+    // always shows the complete bio even while the on-page preview is
+    // shortened for small screens.
+    const fullBioText = new WeakMap();
+
+    document.querySelectorAll(".trustee-bio-text").forEach((el) => {
+        fullBioText.set(el, el.textContent.trim().replace(/\s+/g, " "));
+    });
+
+    const truncateToHalf = (text) => {
+        const targetLength = Math.round(text.length / 2);
+        if (targetLength >= text.length) {
+            return text;
+        }
+        let truncated = text.slice(0, targetLength);
+        const lastSpace = truncated.lastIndexOf(" ");
+        if (lastSpace > 0) {
+            truncated = truncated.slice(0, lastSpace);
+        }
+        return truncated.trim() + "…";
+    };
+
+    const smallScreenQuery = window.matchMedia("(max-width: 1240px)");
+
+    const applyBioPreviewLength = () => {
+        const isSmall = smallScreenQuery.matches;
+        document.querySelectorAll(".trustee-bio-text").forEach((el) => {
+            const full = fullBioText.get(el) ?? el.textContent.trim();
+            el.textContent = isSmall ? truncateToHalf(full) : full;
+        });
+    };
+
+    applyBioPreviewLength();
+    smallScreenQuery.addEventListener("change", applyBioPreviewLength);
+
+    const getParagraphText = (p) => {
+        const bioTextEl = p.querySelector(".trustee-bio-text");
+        if (bioTextEl) {
+            return fullBioText.get(bioTextEl) ?? bioTextEl.textContent.trim();
+        }
+        return p.textContent.trim();
+    };
+
     const openModal = (wrapper) => {
         const name = wrapper.querySelector(".trustee-name h3")?.textContent.trim() ?? "";
         const role = wrapper.querySelector(".trustee-name h5")?.textContent.trim() ?? "";
@@ -22,7 +65,7 @@
             bodyEl.innerHTML = "";
             paragraphs.forEach((p) => {
                 const clone = document.createElement("p");
-                clone.textContent = p.textContent.trim();
+                clone.textContent = getParagraphText(p);
                 bodyEl.appendChild(clone);
             });
         }

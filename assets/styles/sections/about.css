@@ -27,7 +27,7 @@
 .about-page-trsutee-info .about-trustee-image-wrapper {
     border-radius: 0;
     position: absolute;
-    height: 100%;
+    height: stretch;
     right: 0px;
     z-index: 0;
 }
@@ -154,7 +154,7 @@
 
 @media (max-width:500px) {
     .about-page-trsutee-info .trustee-info-wrapper.updated-banner {
-        padding: 0 24px 32px;
+        padding: 52px 24px 32px;
     }
 }
 
@@ -238,6 +238,7 @@
 .our-team-description {
     font-weight: 400;
     font-size: 16px;
+    max-width: 90%;
     line-height: 24px;
     letter-spacing: -0.3px;
     text-transform: capitalize;

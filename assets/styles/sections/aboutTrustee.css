@@ -266,16 +266,18 @@
 .trustee-read-more {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    vertical-align: baseline;
+    gap: 6px;
     background: none;
     border: none;
     padding: 0;
-    margin-top: 8px;
+    margin-left: 10px;
     cursor: pointer;
     color: var(--color-primary-blue);
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
+    white-space: nowrap;
 }
 
 .trustee-read-more-label {
@@ -416,5 +418,40 @@ body.trustee-modal-open {
 
     .trustee-modal-name {
         font-size: 19px;
+    }
+}
+
+/* Small circular trustee avatar next to the name, mobile only */
+.trustee-avatar-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .about-trustee-image-wrapper {
+        display: none;
+    }
+
+    .trustee-name-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .trustee-avatar-mobile {
+        display: block;
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ffffff;
+        box-shadow: 0 2px 8px rgba(1, 34, 57, 0.15);
+    }
+}
+
+/* Shrink the visible bio preview on smaller screens to save vertical space */
+@media (max-width: 1240px) {
+    .trustee-read-more {
+        margin-left: 6px;
     }
 }
