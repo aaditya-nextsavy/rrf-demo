@@ -27,6 +27,14 @@
     --hover-bg: #DD1367;
 }
 
+.gender-equality-card {
+    --hover-bg: #FF3A21;
+}
+
+.sustainable-cities-card {
+    --hover-bg: #F99D26;
+}
+
 .financial-card {
     --hover-bg: #017CC1;
 }
@@ -130,6 +138,11 @@
     max-height: 70px;
 }
 
+.customCard-sdg {
+    color: var(--text);
+    transition: .35s ease;
+}
+
 .customCard-title {
     font-weight: 900;
     font-size: 40px;
@@ -195,7 +208,8 @@
 
 .customCard:hover .customCard-title,
 .customCard:hover .customCard-description,
-.customCard:hover .customCard-link {
+.customCard:hover .customCard-link,
+.customCard:hover .customCard-sdg {
     color: var(--hover-text);
 }
 
@@ -212,7 +226,8 @@
 
     .customCard-title,
     .customCard-description,
-    .customCard-link {
+    .customCard-link,
+    .customCard-sdg {
         color: var(--hover-text);
     }
 

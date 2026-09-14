@@ -38,11 +38,16 @@
                 return;
             }
 
-            const optionLabel = input.closest(".form-checkbox-item")?.querySelector("span");
+            const selectedItem = input.closest(".form-checkbox-item");
+            const optionLabel = selectedItem?.querySelector("span");
 
             if (optionLabel && triggerLabel) {
                 triggerLabel.textContent = optionLabel.textContent;
             }
+
+            menu.querySelectorAll(".form-checkbox-item").forEach((item) => {
+                item.classList.toggle("is-selected", item === selectedItem);
+            });
 
             trigger.classList.add("contact-dropdown-trigger--selected");
 
@@ -66,6 +71,9 @@
                 triggerLabel.textContent = placeholder;
             }
             trigger.classList.remove("contact-dropdown-trigger--selected");
+            menu.querySelectorAll(".form-checkbox-item.is-selected").forEach((item) => {
+                item.classList.remove("is-selected");
+            });
         });
 
         dropdown.closest("form")?.addEventListener("reset", () => {
@@ -73,6 +81,9 @@
                 triggerLabel.textContent = placeholder;
             }
             trigger.classList.remove("contact-dropdown-trigger--selected");
+            menu.querySelectorAll(".form-checkbox-item.is-selected").forEach((item) => {
+                item.classList.remove("is-selected");
+            });
         });
     });
 })();

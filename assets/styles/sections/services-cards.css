@@ -150,6 +150,14 @@
     height: 100%;
 }
 
+.services-custom-card-sdg {
+    color: var(--hover-text);
+    margin-bottom: 8px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+}
+
 .services-custom-card-title {
 
     color: var(--hover-text);

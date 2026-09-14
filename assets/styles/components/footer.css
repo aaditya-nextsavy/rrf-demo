@@ -948,10 +948,8 @@
 
 .form-checkbox-item {
     display: flex;
-    flex-direction: row-reverse;
     align-items: center;
     justify-content: start;
-    gap: 8px;
     cursor: pointer;
 
     font-size: 18px;
@@ -970,39 +968,14 @@
 .form-checkbox-item input[type="radio"] {
     appearance: none;
     -webkit-appearance: none;
-    aspect-ratio: 1;
-    width: 14px;
-    height: 14px;
-    padding: 2px;
-    border: 1px solid #017CC1;
-    border-radius: 50%;
-    background: #fff;
-
-    cursor: pointer;
-    position: relative;
-}
-
-.form-checkbox-item input[type="radio"]:checked {
-    /* background: #017CC1; */
-    border-color: #017CC1;
-}
-
-
-.form-checkbox-item input[type="radio"]::after {
-    transition: all 0.35s ease;
-    content: "";
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    opacity: 0;
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.form-checkbox-item input[type="radio"]:checked::after {
-    background: #017CC1;
+    pointer-events: none;
 }
 
 
@@ -1079,7 +1052,7 @@
     background: #fff;
     border: 1px solid rgba(1, 123, 193, 0.5);
     border-radius: 12px;
-    padding: 4px 20px;
+    padding: 4px 8px;
     box-shadow: 10px 10px 20px 0px #0000000D;
 
     opacity: 0;
@@ -1095,12 +1068,18 @@
 }
 
 .contact-dropdown-menu .form-checkbox-item {
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(1, 123, 193, 0.15);
+    padding: 14px 12px;
+    margin: 4px 0;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
 }
 
-.contact-dropdown-menu .form-checkbox-item:last-of-type {
-    border-bottom: none;
+.contact-dropdown-menu .form-checkbox-item:hover {
+    background: rgba(1, 124, 193, 0.06);
+}
+
+.contact-dropdown-menu .form-checkbox-item.is-selected {
+    background: rgba(1, 124, 193, 0.1);
 }
 
 
