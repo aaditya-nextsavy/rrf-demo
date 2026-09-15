@@ -73,6 +73,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-direction: row-reverse;
 }
 
 .cta-card1-category {
@@ -80,26 +81,26 @@
     align-items: center;
     justify-content: center;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 34px;
     line-height: 100%;
     letter-spacing: 0px;
     text-transform: uppercase;
     color: #fff;
     border-radius: 403.23px;
     padding: 10px 18px;
-    border: 1px solid var(--color-white);
+    /* border: 1px solid var(--color-white); */
 }
 
 .cta-card1-floating-icon {
     position: absolute;
     top: 32px;
-    right: 32px;
+    left: 32px;
     width: 70px;
     flex-shrink: 0;
 }
 
 .cta-card1-floating-icon svg {
-    width: 100%;
+    width: 80%;
     height: auto;
     display: block;
 }
@@ -388,7 +389,7 @@
     }
 
     .cta-card1-category {
-        font-size: 12px;
+        font-size: 22px;
         padding: 7px 14px;
     }
 
@@ -403,7 +404,7 @@
 
     .cta-card1-floating-icon {
         top: 22px;
-        right: 22px;
+        left: 22px;
         width: 50px;
     }
 
@@ -525,7 +526,7 @@
 
     .cta-card1-floating-icon {
         top: 42px;
-        right: 42px;
+        left: 42px;
         width: 80px;
     }
 
@@ -543,7 +544,7 @@
 
     .cta-card1-floating-icon {
         top: 32px;
-        right: 32px;
+        left: 32px;
         width: 50px;
     }
 
@@ -627,13 +628,13 @@
     }
 
     .cta-card1-category {
-        font-size: 10px;
+        font-size: 18px;
         padding: 5px 10px;
     }
 
     .cta-card1-floating-icon {
         top: 21px;
-        right: 22px;
+        left: 22px;
         width: 40px;
     }
 

@@ -526,3 +526,14 @@ img {
         max-width: 100%;
     }
 }
+
+
+
+.floating-number-card {
+    position: absolute;
+    font-size: 54px;
+    right: 60px;
+    font-size: 900;
+    font-family: var(--font-primary) !important;
+    top: 50px;
+}

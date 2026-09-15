@@ -131,6 +131,10 @@
     width: 220px;
     height: auto;
     margin-bottom: 28px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .customCard-icon svg {
@@ -233,6 +237,27 @@
 
     .customCard-button,
     .customCard-icon {
+        color: var(--hover-text);
+    }
+}
+
+
+.floating-number-card,
+.floating-number-card h3 {
+    color: var(--text);
+    transition: .35s ease;
+}
+
+
+.customCard:hover .floating-number-card,
+.customCard:hover .floating-number-card h3 {
+    color: var(--hover-text);
+}
+
+
+
+@media (max-width: 991px) {
+    .floating-number-card h3 {
         color: var(--hover-text);
     }
 }

@@ -54,7 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const isControllerActive = (controller) => (
         desktopQuery.matches
             ? isDesktopSection(controller)
-            : isMobileSection(controller)
+            // Mobile scroll-jack stacking disabled — cards stack one after
+            // another in normal flow instead (see keyAreas.css). Restore
+            // the line below to bring back the pinned peel-stack effect.
+            // : isMobileSection(controller)
+            : false
     );
 
     const resetStyles = (controller) => {

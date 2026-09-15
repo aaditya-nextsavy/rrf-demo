@@ -242,6 +242,12 @@
         margin-bottom: 0px;
     }
 
+    .floating-number-card {
+        top: 35px;
+        right: 38px;
+        font-size: 40px;
+    }
+
     .customCard-link {
         font-size: 12px;
     }
@@ -355,6 +361,12 @@
         padding-left: 0;
     }
 
+    /* STACKED/PINNED SCROLL ANIMATION (disabled below max-width: 1023px) —
+       this pinned .stackCardsSection + absolutely-positioned .customCard
+       is what makes the mobile cards pile on top of one another while
+       scrolling. Uncomment this block and delete the "ONE-AFTER-ANOTHER"
+       block below to bring that animation back.
+
     .key-areas-slider-stack-wrapper .stackCardsSection {
         position: sticky;
         top: 0;
@@ -373,10 +385,6 @@
         gap: 0;
     }
 
-    .key-areas-section .customCard+.customCard {
-        margin-left: 0px;
-    }
-
     .key-areas-slider-stack-wrapper .customCard {
         position: absolute;
         top: 50%;
@@ -384,6 +392,40 @@
         transform-origin: center center;
         will-change: transform, opacity;
         transition: none;
+    }
+    */
+
+    .key-areas-section .customCard+.customCard {
+        margin-left: 0px;
+    }
+
+    /* ONE-AFTER-ANOTHER (mobile) — plain vertical list, no scroll-jack. */
+
+    .key-areas-slider-stack-wrapper .stackCardsSection {
+        position: static;
+        height: auto;
+        overflow: visible;
+        padding: 0;
+    }
+
+    .key-areas-slider-stack-wrapper .customCard-wrapper {
+        position: static;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-inline: 0;
+        gap: 0px;
+
+    }
+
+    .key-areas-slider-stack-wrapper .customCard {
+        position: relative;
+        width: 100%;
+        max-width: 380px;
+        transform: none;
     }
 }
 
@@ -423,6 +465,12 @@
     .customCard-icon svg {
         max-width: 60px;
     }
+
+    .floating-number-card {
+        top: 35px;
+        right: 48px;
+        font-size: 36px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -444,6 +492,10 @@
     .key-areas-slider-stack-wrapper .key-areas-section-description p {
         font-size: 15px;
         line-height: 23px;
+    }
+
+    .key-areas-section.mobile {
+        padding-bottom: 0;
     }
 
 }
@@ -468,6 +520,12 @@
 
     .customCard-content {
         padding: 25px 35px 35px 35px;
+    }
+
+    .floating-number-card {
+        top: 25px;
+        right: 35px;
+        font-size: 28px;
     }
 
     .customCard-title {

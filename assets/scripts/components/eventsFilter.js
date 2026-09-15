@@ -5,13 +5,33 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    const filterButtons = eventsSection.querySelectorAll(".year-span");
+    const yearFilter = eventsSection.querySelector(".year-filter");
     const eventCards = eventsSection.querySelectorAll(".our-blog-card");
     const eventCount = eventsSection.querySelector(".annual-reports-count");
 
-    if (!filterButtons.length || !eventCards.length || !eventCount) {
+    if (!yearFilter || !eventCards.length || !eventCount) {
         return;
     }
+
+    const years = Array.from(
+        new Set(Array.from(eventCards, (card) => card.dataset.year).filter(Boolean))
+    ).sort((a, b) => b.localeCompare(a));
+
+    yearFilter.innerHTML = "";
+
+    const createFilterButton = (filterValue, label, isActive) => {
+        const button = document.createElement("span");
+        button.className = isActive ? "year-span active" : "year-span";
+        button.dataset.filter = filterValue;
+        button.textContent = label;
+        yearFilter.appendChild(button);
+        return button;
+    };
+
+    const allButton = createFilterButton("all", "All", true);
+    years.forEach((year) => createFilterButton(year, year, false));
+
+    const filterButtons = yearFilter.querySelectorAll(".year-span");
 
     const updateCount = (visibleCount) => {
         eventCount.textContent = `${visibleCount} Events listed`;
@@ -49,8 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    const defaultActiveButton = eventsSection.querySelector(".year-span.active") || filterButtons[0];
-
-    setActiveButton(defaultActiveButton);
-    applyFilter(defaultActiveButton.dataset.filter || "all");
+    setActiveButton(allButton);
+    applyFilter("all");
 });
