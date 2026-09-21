@@ -11,7 +11,7 @@
 
     flex-shrink: 0;
 
-    cursor: pointer;
+    cursor: default;
     transition: .35s ease;
 }
 
@@ -177,15 +177,19 @@
     font-size: 15px;
     line-height: 100%;
     letter-spacing: 0px;
+
+
+    color: var(--text);
+
+    transition: .35s ease;
+}
+
+.customCard:hover .customCard-link {
     text-transform: capitalize;
     text-decoration: underline;
     text-decoration-style: solid;
     text-decoration-offset: 3px;
     text-decoration-skip-ink: auto;
-
-    color: var(--text);
-
-    transition: .35s ease;
 }
 
 .customCard-button {
