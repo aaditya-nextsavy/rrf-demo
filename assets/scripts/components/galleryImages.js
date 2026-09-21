@@ -32,11 +32,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+    // Dates are written as "Mon, YYYY" (or "Since YYYY" for ongoing projects).
+    const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+
+    function getItemDate(item) {
+        const text = item.querySelector(".gallery-grid-date")?.textContent.trim().toLowerCase() || "";
+        const year = parseInt((text.match(/\d{4}/) || [0])[0], 10);
+        const month = MONTHS.indexOf(text.slice(0, 3));
+        return year * 12 + Math.max(month, 0);
+    }
+
+    // "Recent Activities" always shows the newest items by date, so nothing
+    // needs re-tagging by hand when new photos are added.
+    const RECENT_ACTIVITIES_COUNT = 5;
+
+    Array.from(grid.querySelectorAll(".gallery-grid-item"))
+        .map((item, index) => ({ item, index, date: getItemDate(item) }))
+        .sort((a, b) => b.date - a.date || a.index - b.index)
+        .forEach(({ item }, rank) => {
+            item.classList.toggle("activities", rank < RECENT_ACTIVITIES_COUNT);
+        });
+
     const iso = new Isotope(grid, {
         itemSelector: ".gallery-grid-item",
         layoutMode: "masonry",
         percentPosition: true,
-        transitionDuration: "0.5s"
+        transitionDuration: "0.5s",
+        getSortData: {
+            date: (item) => getItemDate(item)
+        },
+        sortBy: ["date", "original-order"],
+        sortAscending: { date: false, "original-order": true }
     });
 
     imagesLoaded(grid, () => {
