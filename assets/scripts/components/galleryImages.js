@@ -175,11 +175,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    // GLightbox's built-in data-gallery/reload grouping keeps stale state
-    // once it has been opened once, so instead of relying on it, each click
-    // builds a fresh, throwaway instance scoped to only the items matching
-    // the currently active filter - that guarantees prev/next never crosses
-    // into a category the user isn't looking at.
     const galleryItems = Array.from(grid.querySelectorAll(".gallery-grid-item.glightbox"));
     let activeGalleryFilter = "*";
 
