@@ -26,7 +26,7 @@
     width: 100%;
     aspect-ratio: 590 / 660;
 
-    cursor: pointer;
+    cursor: default;
     transition: .35s ease;
     overflow: hidden;
 }
