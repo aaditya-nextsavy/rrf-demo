@@ -504,8 +504,9 @@
     width: max-content;
     display: flex;
     align-items: center;
-    gap: 12px;
-    animation: outcomes-scroll 72s linear infinite;
+    --marquee-gap: 12px;
+    gap: var(--marquee-gap);
+    animation: outcomes-scroll calc(72s * var(--marquee-scale, 1)) linear infinite;
     will-change: transform;
 }
 

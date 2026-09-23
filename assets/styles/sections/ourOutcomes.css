@@ -120,10 +120,12 @@
     width: max-content;
     display: flex;
     align-items: center;
-    gap: 42px;
+    --marquee-gap: 42px;
+    gap: var(--marquee-gap);
 
-    animation: outcomes-scroll 72s linear infinite;
+    animation: outcomes-scroll calc(72s * var(--marquee-scale, 1)) linear infinite;
     will-change: transform;
+    backface-visibility: hidden;
 }
 
 .outcomes-marquee:hover .outcomes-track {
@@ -198,7 +200,7 @@
     }
 
     to {
-        transform: translateX(calc(-50% - 16px));
+        transform: translate3d(calc(-50% - var(--marquee-gap, 0px) / 2), 0, 0);
     }
 }
 
@@ -303,8 +305,8 @@
 @media (max-width: 991px) {
 
     .outcomes-marquee-track {
-        gap: 22px;
-        animation-duration: 24s;
+        --marquee-gap: 22px;
+        animation-duration: calc(24s * var(--marquee-scale, 1));
     }
 
     .outcomes-marquee-item {
@@ -364,8 +366,8 @@
     }
 
     .outcomes-marquee-track {
-        gap: 16px;
-        animation-duration: 42s;
+        --marquee-gap: 16px;
+        animation-duration: calc(42s * var(--marquee-scale, 1));
     }
 
     .outcomes-marquee-item {
