@@ -1,6 +1,6 @@
 (() => {
     const FORM_SELECTOR = ".footer-contact-form";
-    const API_ENDPOINT = "./PHPMailer/api/send-contact.php";
+    const API_ENDPOINT = "/PHPMailer/api/send-contact.php";
     const RECAPTCHA_SITE_KEY = "6LcnNf8sAAAAADi5v4um4S59vMhmknx35QTOHRwT";
     const RECAPTCHA_SCRIPT_SRC = "https://www.google.com/recaptcha/api.js";
     const NAME_PATTERN = /^[a-zA-Z][a-zA-Z\s.'-]{1,}$/;
@@ -57,7 +57,7 @@
             <div class="footer-contact-form-popup__panel" role="dialog" aria-modal="true" aria-live="assertive">
                 <button type="button" class="footer-contact-form-popup__close" aria-label="Close notification">&times;</button>
                 <div class="footer-contact-form-popup__content">
-                <img src="./assets/media/icons/rrf-logo.png" />
+                <img src="/assets/media/icons/rrf-logo.png" />
                     <p class="footer-contact-form-popup__message"></p>
                 </div>
             </div>
