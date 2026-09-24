@@ -1,6 +1,9 @@
 (() => {
     const FORM_SELECTOR = ".footer-contact-form";
-    const API_ENDPOINT = "/PHPMailer/api/send-contact.php";
+    // Resolve paths from this script's location so the site works under any base path (e.g. a local subfolder).
+    const SITE_ROOT = new URL("../../../", document.currentScript?.src || window.location.href).href;
+    const API_ENDPOINT = new URL("PHPMailer/api/send-contact.php", SITE_ROOT).href;
+    const LOGO_SRC = new URL("assets/media/icons/rrf-logo.png", SITE_ROOT).href;
     const RECAPTCHA_SITE_KEY = "6LcnNf8sAAAAADi5v4um4S59vMhmknx35QTOHRwT";
     const RECAPTCHA_SCRIPT_SRC = "https://www.google.com/recaptcha/api.js";
     const NAME_PATTERN = /^[a-zA-Z][a-zA-Z\s.'-]{1,}$/;
@@ -57,7 +60,7 @@
             <div class="footer-contact-form-popup__panel" role="dialog" aria-modal="true" aria-live="assertive">
                 <button type="button" class="footer-contact-form-popup__close" aria-label="Close notification">&times;</button>
                 <div class="footer-contact-form-popup__content">
-                <img src="/assets/media/icons/rrf-logo.png" />
+                <img src="${LOGO_SRC}" />
                     <p class="footer-contact-form-popup__message"></p>
                 </div>
             </div>

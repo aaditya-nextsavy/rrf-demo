@@ -1,0 +1,3 @@
+# Vercel serves PHP as plain text, so the mailer must never be deployed there.
+PHPMailer/
+.htaccess

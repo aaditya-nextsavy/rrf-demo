@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.raajventures.com/sitemap.xml
+Sitemap: https://raajratnafoundation.com/sitemap.xml

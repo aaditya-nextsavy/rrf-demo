@@ -1,0 +1,2 @@
+# Library files are only loaded by send-contact.php, never opened in a browser.
+Require all denied
