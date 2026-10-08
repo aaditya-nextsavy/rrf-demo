@@ -51,7 +51,7 @@
 
 .primary-button::before,
 .download-button::before {
-    content: url('../../media/icons/rightarrow.png');
+    content: url('../../media/icons/rightarrow.webp');
     position: absolute;
     font-weight: 300;
     background: var(--color-primary-orange);
@@ -75,7 +75,7 @@
 
 .primary-button::after,
 .download-button::after {
-    content: url('../../media/icons/uprightarrow.png');
+    content: url('../../media/icons/uprightarrow.webp');
     ;
 
     position: absolute;
@@ -98,27 +98,36 @@
 
 }
 
+/* Hover is also driven by the button's wrapper, which never moves and already spans the
+   button plus its arrow circle. Hovering only the sliding button let the cursor fall into
+   the rounded corners mid-slide, which un-hovered it and made it jitter back and forth. */
 .primary-button:hover,
-.download-button:hover {
+.download-button:hover,
+:where(*:has(> .primary-button)):hover > .primary-button,
+:where(*:has(> .download-button)):hover > .download-button {
     background: var(--color-primary-orange);
     transform: translateX(60px);
     cursor: pointer;
 }
 
 .primary-button:hover::after,
-.download-button:hover::after {
+.download-button:hover::after,
+:where(*:has(> .primary-button)):hover > .primary-button::after,
+:where(*:has(> .download-button)):hover > .download-button::after {
     background: var(--color-primary-orange);
 }
 
 .primary-button:hover::before,
-.download-button:hover::before {
+.download-button:hover::before,
+:where(*:has(> .primary-button)):hover > .primary-button::before,
+:where(*:has(> .download-button)):hover > .download-button::before {
     background: var(--color-primary-orange);
 }
 
 
 .download-button::before,
 .download-button::after {
-    content: url('../../media/icons/download-icon.png');
+    content: url('../../media/icons/download-icon.webp');
 }
 
 
@@ -151,10 +160,13 @@
     transition: all 0.3s ease;
 }
 
-.scroll-to-top:hover {
-    background: var(--color-primary-orange);
-    transform: translateY(-2px);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+/* Only on real hover devices: on touch screens :hover sticks after a tap, leaving the button orange */
+@media (hover: hover) and (pointer: fine) {
+    .scroll-to-top:hover {
+        background: var(--color-primary-orange);
+        transform: translateY(-2px);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+    }
 }
 
 .scroll-to-top:focus-visible {

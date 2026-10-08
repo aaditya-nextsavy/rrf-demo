@@ -114,6 +114,8 @@
         display: flex;
         width: 550px;
         align-self: start;
+        /* Centres the text at 60% of the viewport (20vh + 80vh / 2), level with the pinned cards */
+        padding-top: 20vh;
         padding-right: 24px;
         padding-left: 24px;
     }
@@ -142,7 +144,8 @@
 
     .key-areas-section .customCard {
         position: absolute;
-        top: 50%;
+        /* Below 50% so the pinned cards clear the fixed header on shorter laptop screens */
+        top: 60%;
         left: clamp(16px, 2vw, 32px);
         transform-origin: center center;
         will-change: transform, opacity;
@@ -498,6 +501,43 @@
         padding-bottom: 0;
     }
 
+    /* Room for two-line titles (e.g. Sustainable Cities & Communities) */
+    .customCard-title {
+        margin-bottom: 20px;
+    }
+
+}
+
+/* Small phones: keep longer descriptions inside the fixed card shape */
+@media (min-width: 351px) and (max-width: 419px) {
+    .customCard-content {
+        padding: 26px 38px 46px 40px;
+    }
+
+    .floating-number-card {
+        top: 26px;
+        right: 38px;
+        font-size: 32px;
+    }
+
+    .customCard-icon {
+        margin-bottom: 12px;
+    }
+
+    .customCard-icon svg {
+        max-height: 44px;
+    }
+
+    .customCard-title {
+        margin-bottom: 12px;
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .customCard-description {
+        font-size: 13px;
+        line-height: 19px;
+    }
 }
 
 

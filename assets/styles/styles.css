@@ -359,6 +359,7 @@ img {
 
     .section-title__heading {
         margin-bottom: 20px;
+        letter-spacing: -1px;
     }
 
     .section-title__description {

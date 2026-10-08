@@ -80,6 +80,28 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
+// Mirror the client-side rules in contactForm.js
+$namePattern = "/^[a-zA-Z][a-zA-Z\s.'-]{1,}$/";
+$messageLength = mb_strlen($message, 'UTF-8');
+$fieldError = '';
+
+if (!preg_match($namePattern, $firstName) || !preg_match($namePattern, $lastName)) {
+    $fieldError = 'Please enter a valid name.';
+} elseif (!preg_match('/^\d{10,15}$/', $mobileNumber)) {
+    $fieldError = 'Please enter a valid mobile number.';
+} elseif ($messageLength < 10 || $messageLength > 225) {
+    $fieldError = 'Message must be between 10 and 225 characters.';
+}
+
+if ($fieldError !== '') {
+    http_response_code(400);
+    echo json_encode([
+        'status' => false,
+        'message' => $fieldError,
+    ]);
+    exit;
+}
+
 // Verify the captcha with Google so the form cannot be bypassed by posting here directly.
 // Skipped only while no secret is configured (local development).
 if ($config['recaptcha_secret'] !== '') {

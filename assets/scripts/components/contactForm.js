@@ -3,11 +3,14 @@
     // Resolve paths from this script's location so the site works under any base path (e.g. a local subfolder).
     const SITE_ROOT = new URL("../../../", document.currentScript?.src || window.location.href).href;
     const API_ENDPOINT = new URL("PHPMailer/api/send-contact.php", SITE_ROOT).href;
-    const LOGO_SRC = new URL("assets/media/icons/rrf-logo.png", SITE_ROOT).href;
-    const RECAPTCHA_SITE_KEY = "6LcnNf8sAAAAADi5v4um4S59vMhmknx35QTOHRwT";
+    const LOGO_SRC = new URL("assets/media/icons/rrf-logo.webp", SITE_ROOT).href;
+    const RECAPTCHA_SITE_KEY = "6LfmgtktAAAAAEMMhedSKiOgmLV5WR9l4iXpLT_G";
     const RECAPTCHA_SCRIPT_SRC = "https://www.google.com/recaptcha/api.js";
     const NAME_PATTERN = /^[a-zA-Z][a-zA-Z\s.'-]{1,}$/;
     const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const MOBILE_PATTERN = /^\d{10,15}$/;
+    const MESSAGE_MIN_LENGTH = 10;
+    const MESSAGE_MAX_LENGTH = 225;
 
     const forms = Array.from(document.querySelectorAll(FORM_SELECTOR));
 
@@ -124,16 +127,18 @@
             case "first_name":
             case "last_name":
                 return NAME_PATTERN.test(trimmed) ? "" : "Please enter a valid name.";
-            case "mobile_number": {
-                const digits = trimmed.replace(/\D/g, "");
-                return digits.length >= 10 && digits.length <= 15
-                    ? ""
-                    : "Please enter a valid mobile number.";
-            }
+            case "mobile_number":
+                return MOBILE_PATTERN.test(trimmed) ? "" : "Please enter a valid mobile number.";
             case "email":
                 return EMAIL_PATTERN.test(trimmed) ? "" : "Please enter a valid email address.";
             case "message":
-                return trimmed.length >= 10 ? "" : "Please enter at least 10 characters.";
+                if (trimmed.length < MESSAGE_MIN_LENGTH) {
+                    return `Please enter at least ${MESSAGE_MIN_LENGTH} characters.`;
+                }
+
+                return trimmed.length <= MESSAGE_MAX_LENGTH
+                    ? ""
+                    : `Please keep your message under ${MESSAGE_MAX_LENGTH} characters.`;
             default:
                 return "";
         }
@@ -202,19 +207,23 @@
                 input: fields[0]?.querySelector("input"),
                 autocomplete: "given-name",
                 placeholder: "Enter First Name",
+                disallowed: /[^a-zA-Z\s.'-]/g,
             },
             {
                 name: "last_name",
                 input: fields[1]?.querySelector("input"),
                 autocomplete: "family-name",
                 placeholder: "Enter Last Name",
+                disallowed: /[^a-zA-Z\s.'-]/g,
             },
             {
                 name: "mobile_number",
                 input: fields[2]?.querySelector("input"),
                 autocomplete: "tel",
-                inputMode: "tel",
+                inputMode: "numeric",
                 placeholder: "Enter Mobile Number",
+                disallowed: /\D/g,
+                maxLength: 15,
             },
             {
                 name: "email",
@@ -227,6 +236,7 @@
                 input: textareaField?.querySelector("textarea"),
                 autocomplete: "off",
                 placeholder: "Write A Message...",
+                maxLength: MESSAGE_MAX_LENGTH,
             },
         ];
 
@@ -248,10 +258,30 @@
                 input.setAttribute("inputmode", config.inputMode);
             }
 
+            if (config.maxLength) {
+                input.maxLength = config.maxLength;
+            }
+
             if (config.name === "mobile_number") {
-                input.setAttribute("pattern", "[0-9()+\\s-]*");
+                input.setAttribute("pattern", "[0-9]*");
             }
         });
+
+        // Drop characters a field does not accept as they are typed or pasted, keeping the caret in place
+        const stripDisallowed = (input, disallowed) => {
+            const { value } = input;
+            const cleaned = value.replace(disallowed, "");
+
+            if (cleaned === value) {
+                return;
+            }
+
+            const caret = input.selectionStart ?? cleaned.length;
+            const removedBeforeCaret = value.slice(0, caret).length - value.slice(0, caret).replace(disallowed, "").length;
+
+            input.value = input.maxLength > 0 ? cleaned.slice(0, input.maxLength) : cleaned;
+            input.setSelectionRange(caret - removedBeforeCaret, caret - removedBeforeCaret);
+        };
 
         let captchaField = form.querySelector(".footer-contact-form-captcha");
 
@@ -394,6 +424,10 @@
             }
 
             input.addEventListener("input", () => {
+                if (config.disallowed) {
+                    stripDisallowed(input, config.disallowed);
+                }
+
                 if (state.submittedOnce) {
                     setFieldState(form, config, true, index);
                 }
