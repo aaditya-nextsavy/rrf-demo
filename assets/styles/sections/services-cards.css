@@ -518,11 +518,13 @@
         margin-bottom: 15px;
         font-size: 34px;
         line-height: 36px;
+        margin-top: 15px;
     }
 
     .services-custom-card-description {
         font-size: 14px;
         line-height: 22px;
+        margin-top: 15px;
     }
 
     .services-custom-card-link {
@@ -538,7 +540,7 @@
     .services-custom-card-button {
         width: 20px;
         height: 20px;
-        right: 5%;
+        right: 6%;
         bottom: 5%;
     }
 
