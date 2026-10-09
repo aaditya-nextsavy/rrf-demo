@@ -1,0 +1,9 @@
+{
+    "redirects": [
+        {
+            "source": "/:page(.*?\\.html)/:rest(.*)",
+            "destination": "/:page",
+            "permanent": true
+        }
+    ]
+}

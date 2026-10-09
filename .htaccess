@@ -8,6 +8,11 @@ ErrorDocument 404 /404.html
     RewriteCond %{HTTPS} off
     RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:\d+)?$ [NC]
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Drop anything after ".html/" (e.g. /services.html/404 -> /services.html).
+    # The target comes from REQUEST_URI so it also works when the site lives in a subfolder (XAMPP).
+    RewriteCond %{REQUEST_URI} ^(.*?\.html)/
+    RewriteRule \.html/ %1 [L,R=301]
 </IfModule>
 
 # Block project files that are not part of the website.
