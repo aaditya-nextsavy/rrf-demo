@@ -184,6 +184,14 @@
     transition: .35s ease;
 }
 
+/* Stretch the link over the whole card (.customCard-content covers it) so the entire card is clickable. */
+.customCard-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+}
+
 .customCard:hover .customCard-link {
     text-transform: capitalize;
     text-decoration: underline;
@@ -201,6 +209,8 @@
     font-size: 32px;
     z-index: 3;
     transition: .35s ease;
+    /* Decorative icon: let clicks fall through to the card link. */
+    pointer-events: none;
 }
 
 .customCard-button svg {

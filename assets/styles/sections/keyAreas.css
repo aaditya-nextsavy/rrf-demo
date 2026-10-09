@@ -162,6 +162,14 @@
         column-gap: clamp(32px, 5vw, 96px);
 
     }
+
+    .key-areas-info-wrapper {
+        padding-top: 10vh;
+    }
+
+    .key-areas-section .customCard {
+        top: 55%;
+    }
 }
 
 

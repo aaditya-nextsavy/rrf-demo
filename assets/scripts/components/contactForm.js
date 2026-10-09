@@ -4,7 +4,7 @@
     const SITE_ROOT = new URL("../../../", document.currentScript?.src || window.location.href).href;
     const API_ENDPOINT = new URL("PHPMailer/api/send-contact.php", SITE_ROOT).href;
     const LOGO_SRC = new URL("assets/media/icons/rrf-logo.webp", SITE_ROOT).href;
-    const RECAPTCHA_SITE_KEY = "6LfmgtktAAAAAEMMhedSKiOgmLV5WR9l4iXpLT_G";
+    const RECAPTCHA_SITE_KEY = "6LcnNf8sAAAAADi5v4um4S59vMhmknx35QTOHRwT";
     const RECAPTCHA_SCRIPT_SRC = "https://www.google.com/recaptcha/api.js";
     const NAME_PATTERN = /^[a-zA-Z][a-zA-Z\s.'-]{1,}$/;
     const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
