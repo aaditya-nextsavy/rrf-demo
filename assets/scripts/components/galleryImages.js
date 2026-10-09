@@ -53,52 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
             item.classList.toggle("activities", rank < RECENT_ACTIVITIES_COUNT);
         });
 
-    // On-scroll pagination: show PAGE_SIZE items of the active filter, then PAGE_SIZE more each time
-    // the end of the grid nears the viewport. Images past the first page use data-src and only
-    // download once their item is paged in.
-    const PAGE_SIZE = 9;
-
-    // Same order Isotope sorts by (newest first, then original order)
-    const orderedItems = Array.from(grid.querySelectorAll(".gallery-grid-item"))
-        .map((item, index) => ({ item, index, date: getItemDate(item) }))
-        .sort((a, b) => b.date - a.date || a.index - b.index)
-        .map(({ item }) => item);
-
-    let categoryFilter = "*";
-    let shownCount = PAGE_SIZE;
-    let pagedItems = new Set();
-
-    const matchesCategory = (item) => categoryFilter === "*" || item.matches(categoryFilter);
-
-    const loadItemImage = (item) => {
-        const img = item.querySelector("img[data-src]");
-
-        if (img) {
-            img.src = img.dataset.src;
-            img.removeAttribute("data-src");
-        }
-    };
-
-    const updatePagedItems = () => {
-        pagedItems = new Set(orderedItems.filter(matchesCategory).slice(0, shownCount));
-        pagedItems.forEach(loadItemImage);
-    };
-
-    // Isotope calls filter functions with the item element as `this` (the argument is an index)
-    const isPaged = function (itemElem) {
-        return pagedItems.has(itemElem instanceof Element ? itemElem : this);
-    };
-
-    const hasMoreItems = () => orderedItems.filter(matchesCategory).length > pagedItems.size;
-
-    updatePagedItems();
-
+    // All items render at once; images use native loading="lazy" and every tile has a fixed
+    // aspect ratio, so the masonry layout doesn't depend on images having loaded.
     const iso = new Isotope(grid, {
         itemSelector: ".gallery-grid-item",
         layoutMode: "masonry",
         percentPosition: true,
         transitionDuration: "0.5s",
-        filter: isPaged,
         getSortData: {
             date: (item) => getItemDate(item)
         },
@@ -106,71 +67,12 @@ document.addEventListener("DOMContentLoaded", () => {
         sortAscending: { date: false, "original-order": true }
     });
 
-    // Re-layout as each newly paged-in image finishes loading, since masonry depends on image heights
-    const layoutWhenLoaded = () => {
-        imagesLoaded(grid).on("progress", () => iso.layout());
-    };
-
-    const arrangePaged = () => {
-        updatePagedItems();
-        iso.arrange({ filter: isPaged });
-        layoutWhenLoaded();
-    };
+    // Re-layout as images finish loading, in case a tile's final size differs slightly
+    imagesLoaded(grid).on("progress", () => iso.layout());
 
     const applyCategory = (filterValue) => {
-        categoryFilter = filterValue || "*";
-        shownCount = PAGE_SIZE;
-        arrangePaged();
+        iso.arrange({ filter: filterValue || "*" });
     };
-
-    layoutWhenLoaded();
-
-    const sentinel = document.createElement("div");
-    sentinel.className = "gallery-load-sentinel";
-    sentinel.setAttribute("aria-hidden", "true");
-    grid.insertAdjacentElement("afterend", sentinel);
-
-    const LOAD_AHEAD = 400;
-    let loadingMore = false;
-
-    const loadMore = () => {
-        if (loadingMore || !hasMoreItems()) {
-            return;
-        }
-
-        loadingMore = true;
-        shownCount += PAGE_SIZE;
-        arrangePaged();
-    };
-
-    // Load the next page once the end of the grid is within LOAD_AHEAD px of the viewport bottom,
-    // including when it has already scrolled above it (fast scrolls / End key)
-    const checkNearEnd = () => {
-        if (sentinel.getBoundingClientRect().top < window.innerHeight + LOAD_AHEAD) {
-            loadMore();
-        }
-    };
-
-    // Keep filling while the end of the grid is still on screen (e.g. tall viewports)
-    iso.on("layoutComplete", () => {
-        loadingMore = false;
-        checkNearEnd();
-    });
-
-    let scrollFrame = null;
-    const onScroll = () => {
-        if (scrollFrame) {
-            return;
-        }
-
-        scrollFrame = requestAnimationFrame(() => {
-            scrollFrame = null;
-            checkNearEnd();
-        });
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
 
     const checkboxes = document.querySelectorAll(
         ".gallery-filter-sidebar input[type='checkbox']"
