@@ -18,7 +18,6 @@
     const IMAGES = [
         "home/outcome1.webp",
         "home/outcome2.webp",
-        "home/outcome3.webp",
         "home/outcome4.webp",
         "marquee/pool-1.webp",
         "marquee/pool-2.webp",
