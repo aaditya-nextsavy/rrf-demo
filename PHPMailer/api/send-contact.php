@@ -30,11 +30,12 @@ define('SITE_URL', $config['site_url']);
 const CONTACT_EMAIL = 'info@raajratnafoundation.com';
 const CONTACT_PHONE = '+917927561915';
 const LOGO_PATH = __DIR__ . '/../../assets/media/icons/rrf-logo.png';
+// Only LinkedIn is live for now. Uncomment the others (and set their real page URLs) once the client shares them.
 const SOCIAL_LINKS = [
-    ['https://www.facebook.com/', 'https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png', 'Facebook'],
-    ['https://www.x.com/', 'https://img.icons8.com/ios-filled/50/ffffff/twitterx--v1.png', 'X'],
+    // ['https://www.facebook.com/', 'https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png', 'Facebook'],
+    // ['https://www.x.com/', 'https://img.icons8.com/ios-filled/50/ffffff/twitterx--v1.png', 'X'],
     ['https://www.linkedin.com/company/raajratna-foundation/', 'https://img.icons8.com/ios-filled/50/ffffff/linkedin.png', 'LinkedIn'],
-    ['https://www.instagram.com/', 'https://img.icons8.com/ios-filled/50/ffffff/instagram-new--v1.png', 'Instagram'],
+    // ['https://www.instagram.com/', 'https://img.icons8.com/ios-filled/50/ffffff/instagram-new--v1.png', 'Instagram'],
 ];
 
 const CATEGORY_LABELS = [
