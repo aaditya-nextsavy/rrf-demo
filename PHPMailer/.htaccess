@@ -1,0 +1,2 @@
+# The mailer library and config example are only loaded by /contact-mailer.php, never opened in a browser.
+Require all denied

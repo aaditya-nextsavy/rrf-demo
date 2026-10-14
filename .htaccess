@@ -1,5 +1,9 @@
 Options -Indexes
 
+# Don't auto-append "/" to folder names: /events and /services are served as events.html
+# and services.html below, even though folders with those names exist.
+DirectorySlash Off
+
 ErrorDocument 404 /404.html
 
 # Force HTTPS on the live domain (skipped on localhost / XAMPP).
@@ -9,10 +13,32 @@ ErrorDocument 404 /404.html
     RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:\d+)?$ [NC]
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-    # Drop anything after ".html/" (e.g. /services.html/404 -> /services.html).
+    # Renamed pages: keep old links and search results working.
+    RewriteCond %{REQUEST_URI} ^(.*/events/)table-tennis-drive(?:\.html)?/?$
+    RewriteRule ^ %1youth-development-through-sports [L,R=301]
+
+    # Drop anything after ".html/" (e.g. /services.html/404 -> /services).
     # The target comes from REQUEST_URI so it also works when the site lives in a subfolder (XAMPP).
-    RewriteCond %{REQUEST_URI} ^(.*?\.html)/
+    RewriteCond %{REQUEST_URI} ^(.*?)\.html/
     RewriteRule \.html/ %1 [L,R=301]
+
+    # Old ".html" addresses -> clean ones (/events.html -> /events, /index.html -> /).
+    # THE_REQUEST is what the browser asked for, so the internal rewrite below can't loop back here.
+    RewriteCond %{THE_REQUEST} ^[A-Z]+\s([^\s?]*/)index(?:\.html)?[\s?]
+    RewriteRule ^ %1 [L,R=301]
+    RewriteCond %{THE_REQUEST} ^[A-Z]+\s([^\s?]+)\.html[\s?]
+    RewriteRule ^ %1 [L,R=301]
+
+    # Pages without ".html": /events/ -> /events (a trailing slash would break the pages' relative links) ...
+    RewriteCond %{REQUEST_FILENAME} ^(.+?)/?$
+    RewriteCond %1.html -f
+    RewriteCond %{REQUEST_URI} ^(.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # ... and /events serves events.html (also for folders that share a page's name, like /events and /services).
+    RewriteCond %{REQUEST_FILENAME} ^(.+?)/?$
+    RewriteCond %1.html -f
+    RewriteRule ^(.+?)/?$ $1.html [L]
 </IfModule>
 
 # Block project files that are not part of the website.

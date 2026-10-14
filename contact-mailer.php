@@ -2,25 +2,36 @@
 
 header('Content-Type: application/json; charset=UTF-8');
 
+date_default_timezone_set('Asia/Kolkata');
+
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 
-require __DIR__ . '/../src/Exception.php';
-require __DIR__ . '/../src/PHPMailer.php';
-require __DIR__ . '/../src/SMTP.php';
+require __DIR__ . '/PHPMailer/src/Exception.php';
+require __DIR__ . '/PHPMailer/src/PHPMailer.php';
+require __DIR__ . '/PHPMailer/src/SMTP.php';
 
-// Per-environment settings (SMTP login, reCAPTCHA secret, site URL) live one level above the site folder,
+// Per-environment settings (SMTP login, site URL) live one level above the site folder,
 // so they never ship with the code: public_html's parent on cPanel, C:\xampp\htdocs\RRV locally.
 // See PHPMailer/rrf-config.example.php for the expected keys.
-const CONFIG_PATH = __DIR__ . '/../../../rrf-config.php';
+const CONFIG_PATH = __DIR__ . '/../rrf-config.php';
 
-if (!is_file(CONFIG_PATH)) {
-    http_response_code(500);
+// Every failure carries a short "error" code (visible in the browser's Network tab) next to a visitor-friendly
+// message. Technical details never go to the browser; they are written to this folder's error_log instead.
+function respondWithError(int $httpStatus, string $errorCode, string $message): void
+{
+    http_response_code($httpStatus);
     echo json_encode([
         'status' => false,
-        'message' => 'The contact form is not configured yet.',
+        'error' => $errorCode,
+        'message' => $message,
     ]);
     exit;
+}
+
+if (!is_file(CONFIG_PATH)) {
+    error_log('Contact form: config file not found at ' . CONFIG_PATH);
+    respondWithError(500, 'config_missing', 'The contact form is temporarily unavailable. Please email us at info@raajratnafoundation.com.');
 }
 
 $config = require CONFIG_PATH;
@@ -29,7 +40,7 @@ $config = require CONFIG_PATH;
 define('SITE_URL', $config['site_url']);
 const CONTACT_EMAIL = 'info@raajratnafoundation.com';
 const CONTACT_PHONE = '+917927561915';
-const LOGO_PATH = __DIR__ . '/../../assets/media/icons/rrf-logo.png';
+const LOGO_PATH = __DIR__ . '/assets/media/icons/rrf-logo.png';
 // Only LinkedIn is live for now. Uncomment the others (and set their real page URLs) once the client shares them.
 const SOCIAL_LINKS = [
     // ['https://www.facebook.com/', 'https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png', 'Facebook'],
@@ -38,7 +49,15 @@ const SOCIAL_LINKS = [
     // ['https://www.instagram.com/', 'https://img.icons8.com/ios-filled/50/ffffff/instagram-new--v1.png', 'Instagram'],
 ];
 
+// The form posts the option text itself; anything else is rejected.
 const CATEGORY_LABELS = [
+    'Ask a question or get more information.',
+    'Share feedback, or report an issue.',
+    'Discuss a future business opportunity.',
+    'Others.',
+];
+// Old option-N values, still accepted from pages cached before the change.
+const LEGACY_CATEGORY_VALUES = [
     'option-1' => 'Ask a question or get more information.',
     'option-2' => 'Share feedback, or report an issue.',
     'option-3' => 'Discuss a future business opportunity.',
@@ -46,12 +65,7 @@ const CATEGORY_LABELS = [
 ];
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode([
-        'status' => false,
-        'message' => 'Invalid request method.',
-    ]);
-    exit;
+    respondWithError(405, 'method_not_allowed', 'Invalid request method.');
 }
 
 $firstName = trim($_POST['first_name'] ?? '');
@@ -60,25 +74,16 @@ $mobileNumber = trim($_POST['mobile_number'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $message = trim($_POST['message'] ?? '');
 $category = trim($_POST['category'] ?? '');
-$categoryLabel = CATEGORY_LABELS[$category] ?? '';
+$category = LEGACY_CATEGORY_VALUES[$category] ?? $category;
+$categoryLabel = in_array($category, CATEGORY_LABELS, true) ? $category : '';
 $fullName = trim($firstName . ' ' . $lastName);
 
 if ($firstName === '' || $lastName === '' || $mobileNumber === '' || $email === '' || $message === '') {
-    http_response_code(400);
-    echo json_encode([
-        'status' => false,
-        'message' => 'All fields are required.',
-    ]);
-    exit;
+    respondWithError(400, 'invalid_input', 'All fields are required.');
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400);
-    echo json_encode([
-        'status' => false,
-        'message' => 'Please provide a valid email address.',
-    ]);
-    exit;
+    respondWithError(400, 'invalid_input', 'Please provide a valid email address.');
 }
 
 // Mirror the client-side rules in contactForm.js
@@ -95,17 +100,12 @@ if (!preg_match($namePattern, $firstName) || !preg_match($namePattern, $lastName
 }
 
 if ($fieldError !== '') {
-    http_response_code(400);
-    echo json_encode([
-        'status' => false,
-        'message' => $fieldError,
-    ]);
-    exit;
+    respondWithError(400, 'invalid_input', $fieldError);
 }
 
-// Verify the captcha with Google so the form cannot be bypassed by posting here directly.
-// Skipped only while no secret is configured (local development).
-if ($config['recaptcha_secret'] !== '') {
+// Verify the captcha with Google before any mail is sent, so a failure here is never an SMTP problem.
+// Only runs when the config sets 'recaptcha_verify' => true (switched on per environment while the secret is tested).
+if (!empty($config['recaptcha_verify'])) {
     $verify = curl_init('https://www.google.com/recaptcha/api/siteverify');
     curl_setopt_array($verify, [
         CURLOPT_POST => true,
@@ -117,15 +117,18 @@ if ($config['recaptcha_secret'] !== '') {
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_TIMEOUT => 10,
     ]);
-    $captchaResult = json_decode((string) curl_exec($verify), true);
+    $captchaRaw = curl_exec($verify);
+
+    if ($captchaRaw === false) {
+        error_log('Contact form captcha check could not reach Google: ' . curl_error($verify));
+        respondWithError(503, 'captcha_unavailable', 'We could not verify the captcha right now. Please try again in a moment.');
+    }
+
+    $captchaResult = json_decode((string) $captchaRaw, true);
 
     if (empty($captchaResult['success'])) {
-        http_response_code(400);
-        echo json_encode([
-            'status' => false,
-            'message' => 'Captcha verification failed. Please try again.',
-        ]);
-        exit;
+        error_log('Contact form captcha failed: ' . $captchaRaw);
+        respondWithError(400, 'captcha_failed', 'Captcha verification failed. Please tick the captcha again and resubmit.');
     }
 }
 
@@ -288,7 +291,7 @@ function userEmailLayout(string $safeFullName): string
                             <p style='margin:0 0 10px; {$small}'>For any queries, connect with us at <a href='mailto:{$contactEmail}' style='color:#0B3A66; font-weight:bold; text-decoration:none;'>{$contactEmail}</a></p>
                             <p style='margin:0 0 24px; {$small}'>&copy; {$year} Raajratna Foundation. All Rights Reserved.</p>
                             <p style='margin:0 0 24px; {$small}'>
-                                <a href='{$site}contact.html' target='_blank' style='{$footerLink}'>Contact</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='{$site}about.html' target='_blank' style='{$footerLink}'>About</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='{$site}terms-and-conditions.html' target='_blank' style='{$footerLink}'>Terms of use</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='{$site}privacy-policy.html' target='_blank' style='{$footerLink}'>Privacy policy</a>
+                                <a href='{$site}contact' target='_blank' style='{$footerLink}'>Contact</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='{$site}about' target='_blank' style='{$footerLink}'>About</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='{$site}terms-and-conditions' target='_blank' style='{$footerLink}'>Terms of use</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href='{$site}privacy-policy' target='_blank' style='{$footerLink}'>Privacy policy</a>
                             </p>
                             <p style='margin:0 0 12px; {$small}'>Follow us on</p>
                             <table role='presentation' cellspacing='0' cellpadding='0' border='0'>
@@ -330,10 +333,23 @@ try {
         'status' => true,
         'message' => 'Your message has been sent successfully.',
     ]);
-} catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode([
-        'status' => false,
-        'message' => 'We could not send your message right now. Please try again later.',
-    ]);
+} catch (Throwable $e) {
+    // Record the real reason (e.g. "SMTP Error: Could not authenticate.") in this folder's error_log.
+    $reason = $e->getMessage();
+    error_log('Contact form mail failed: ' . $reason);
+
+    // Name the failing step in the error code; the visitor sees the same friendly message either way.
+    if (stripos($reason, 'authenticate') !== false) {
+        $errorCode = 'mail_auth_failed';
+    } elseif (stripos($reason, 'connect') !== false) {
+        $errorCode = 'mail_connect_failed';
+    } elseif (stripos($reason, 'From address') !== false || stripos($reason, 'sender') !== false) {
+        $errorCode = 'mail_sender_rejected';
+    } elseif (stripos($reason, 'recipients') !== false) {
+        $errorCode = 'mail_recipient_rejected';
+    } else {
+        $errorCode = 'mail_failed';
+    }
+
+    respondWithError(500, $errorCode, 'We could not send your message right now. Please try again later, or email us at info@raajratnafoundation.com.');
 }

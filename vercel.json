@@ -1,7 +1,13 @@
 {
+    "cleanUrls": true,
     "redirects": [
         {
-            "source": "/:page(.*?\\.html)/:rest(.*)",
+            "source": "/events/table-tennis-drive(\\.html)?",
+            "destination": "/events/youth-development-through-sports",
+            "permanent": true
+        },
+        {
+            "source": "/:page(.*?)\\.html/:rest(.*)",
             "destination": "/:page",
             "permanent": true
         }
